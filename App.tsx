@@ -16,6 +16,9 @@ import {
 import ClassView from './src_demo/components/ClassView';
 import FunctionView from './src_demo/components/FunctionView';
 import TimerView from './src_demo/components/TimerView';
+import TextDemo from './src_demo/components/TextDemo';
+import ImageDemo from './src_demo/components/ImageDemo';
+import ImageBackgroundDemo from './src_demo/components/ImageBackgroundDemo';
 
 
 function App(): JSX.Element {
@@ -34,18 +37,21 @@ function App(): JSX.Element {
         barStyle='dark-content'
         backgroundColor="#ffffff"
       />
-      
+
       <View style={styles.container}>
         {/* {showClassView && <ClassView/>} */}
         {/* <FunctionView name = "Blend" age = {30}></FunctionView> */}
-        {<TimerView/>}
+        {/* {<TimerView/>} */}
+        {/* <TextDemo /> */}
+        {/* <ImageDemo /> */}
+        <ImageBackgroundDemo/>
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container : {
+  container: {
     width: "100%",
     height: "100%",
     flexDirection: "column",
