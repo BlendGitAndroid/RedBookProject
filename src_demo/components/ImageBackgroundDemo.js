@@ -9,7 +9,12 @@ export default () => {
         <ImageBackground style={styles.viewStyle} imgStyle={styles.imgStyle}
             source={bg_card}
         >
-            <Text>子元素</Text>
+            <Image style={styles.icon_logo} source={icon_bank} />
+            <Text style={styles.textBank}>
+                {`招商银行\n`}
+                <Text style={styles.cardTypeText}>{`储蓄卡\n\n`}</Text>
+                <Text style={styles.cardNoTxt}>●●●●   ●●●●   ●●●●   3068</Text>
+            </Text>
         </ImageBackground>
     </View>
 }
@@ -31,6 +36,28 @@ const styles = StyleSheet.create({
     imgStyle: {
         resizeMode: 'cover',
         borderRadius: 12,
+    },
+    icon_logo: {
+        width: 48,
+        height: 48,
+        marginLeft: 20,
+        marginTop: 20,
+    },
+    textBank: {
+        fontSize: 24,
+        color: "white",
+        marginLeft: 10,
+        marginTop: 21,
+        fontWeight: "bold",
+    },
+    cardTypeText: {
+        fontSize: 20,
+        color: "#FFFFFFA0",
+        fontWeight: "normal",
+    },
+    cardNoTxt: {
+        fontSize: 26,
+        fontWeight: "bold",
     }
 
 })
