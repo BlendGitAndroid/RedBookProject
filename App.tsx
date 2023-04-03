@@ -19,6 +19,7 @@ import TimerView from './src_demo/components/TimerView';
 import TextDemo from './src_demo/components/TextDemo';
 import ImageDemo from './src_demo/components/ImageDemo';
 import ImageBackgroundDemo from './src_demo/components/ImageBackgroundDemo';
+import TextInputDemo from './src_demo/components/TextInputDemo';
 
 
 function App(): JSX.Element {
@@ -44,7 +45,8 @@ function App(): JSX.Element {
         {/* {<TimerView/>} */}
         {/* <TextDemo /> */}
         {/* <ImageDemo /> */}
-        <ImageBackgroundDemo/>
+        {/* <ImageBackgroundDemo/> */}
+        <TextInputDemo/>
       </View>
     </SafeAreaView>
   );

@@ -6,7 +6,7 @@ import icon_bank from "../assets/images/icon_bank.png"
 
 export default () => {
     return <View style={styles.root}>
-        <ImageBackground style={styles.viewStyle} imgStyle={styles.imgStyle}
+        <ImageBackground style={styles.viewStyle} imageStyle={styles.imgStyle}
             source={bg_card}
         >
             <Image style={styles.icon_logo} source={icon_bank} />
