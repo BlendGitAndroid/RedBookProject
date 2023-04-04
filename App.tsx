@@ -7,6 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import {
+  Button,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -20,6 +21,13 @@ import TextDemo from './src_demo/components/TextDemo';
 import ImageDemo from './src_demo/components/ImageDemo';
 import ImageBackgroundDemo from './src_demo/components/ImageBackgroundDemo';
 import TextInputDemo from './src_demo/components/TextInputDemo';
+import TouchableOpacityDemo from './src_demo/components/TouchableOpacityDemo';
+import TouchableHighLightDemo from './src_demo/components/TouchableHighLightDemo';
+import ButtonDemo from './src_demo/components/ButtonDemo';
+import PressableDemo from './src_demo/components/PressableDemo';
+import ScrollViewDemo from './src_demo/components/ScrollViewDemo';
+import FlatListViewDemo from './src_demo/components/FlatListViewDemo';
+import SectionListDemo from './src_demo/components/SectionListDemo';
 
 
 function App(): JSX.Element {
@@ -46,7 +54,16 @@ function App(): JSX.Element {
         {/* <TextDemo /> */}
         {/* <ImageDemo /> */}
         {/* <ImageBackgroundDemo/> */}
-        <TextInputDemo/>
+        {/* <TextInputDemo/> */}
+
+        {/* 四种按钮组件 */}
+        {/* <TouchableOpacityDemo/> */}
+        {/* <TouchableHighLightDemo/> */}
+        {/* <ButtonDemo/> */}
+        {/* <PressableDemo/> */}
+        {/* <ScrollViewDemo/> */}
+        {/* <FlatListViewDemo/> */}
+        <SectionListDemo/>
       </View>
     </SafeAreaView>
   );
