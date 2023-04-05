@@ -4,7 +4,8 @@ import {
     View,
     Text,
     SectionList,
-    RefreshControl
+    RefreshControl,
+    StatusBar
 } from 'react-native';
 
 import { SectionData } from '../constants/Data';
@@ -23,7 +24,13 @@ export default () => {
         );
     }
 
-    return <View style={styles.container}>
+    return <View style={styles.root}>
+        <StatusBar
+            barStyle={"light-content"}  //字体颜色
+            backgroundColor={"#30303060"} //背景颜色
+            translucent={true}  //穿透状态栏，沉浸式状态栏
+            hidden={false}  //隐藏状态栏
+        ></StatusBar>
         <SectionList
             style={styles.container}
             sections={SectionData}
@@ -38,7 +45,7 @@ export default () => {
                         setRefreshing(true)
                         setTimeout(() => {
                             setRefreshing(false)
-                        },2000)
+                        }, 2000)
                     }}
                 />
             }
@@ -53,6 +60,10 @@ export default () => {
 }
 
 const styles = StyleSheet.create({
+    root: {
+        width: "100%",
+        height: "100%",
+    },
     container: {
         width: "100%",
         height: "100%",

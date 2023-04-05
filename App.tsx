@@ -29,6 +29,7 @@ import ScrollViewDemo from './src_demo/components/ScrollViewDemo';
 import FlatListViewDemo from './src_demo/components/FlatListViewDemo';
 import SectionListDemo from './src_demo/components/SectionListDemo';
 import ModalDemo from './src_demo/components/ModalDemo';
+import SwitchDemo from './src_demo/components/SwitchDemo';
 
 
 function App(): JSX.Element {
@@ -65,7 +66,8 @@ function App(): JSX.Element {
         {/* <ScrollViewDemo/> */}
         {/* <FlatListViewDemo/> */}
         {/* <SectionListDemo/> */}
-        <ModalDemo/>
+        {/* <ModalDemo/> */}
+        <SwitchDemo/>
       </View>
     </SafeAreaView>
   );
