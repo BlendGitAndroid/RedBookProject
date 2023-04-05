@@ -30,6 +30,7 @@ import FlatListViewDemo from './src_demo/components/FlatListViewDemo';
 import SectionListDemo from './src_demo/components/SectionListDemo';
 import ModalDemo from './src_demo/components/ModalDemo';
 import SwitchDemo from './src_demo/components/SwitchDemo';
+import TestApi from './src_demo/components/TestApi';
 
 
 function App(): JSX.Element {
@@ -67,7 +68,8 @@ function App(): JSX.Element {
         {/* <FlatListViewDemo/> */}
         {/* <SectionListDemo/> */}
         {/* <ModalDemo/> */}
-        <SwitchDemo/>
+        {/* <SwitchDemo/> */}
+        <TestApi/>
       </View>
     </SafeAreaView>
   );
