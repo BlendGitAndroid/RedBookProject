@@ -1,14 +1,17 @@
-import React, { useRef, useEffect, useSatte } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
     StyleSheet,
     View,
     Text,
     SectionList,
+    RefreshControl
 } from 'react-native';
 
 import { SectionData } from '../constants/Data';
 
 export default () => {
+
+    const [refreshing, setRefreshing] = useState(false)
 
     const renderItem = ({ item, index, section }) => {
         return <Text style={styles.txt}>{item}</Text>
@@ -28,6 +31,21 @@ export default () => {
             keyExtractor={(item, index) => `${item}-${index}`}
             renderSectionHeader={renderSectionHeader}
             stickySectionHeadersEnabled={true}  //吸顶的效果
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={() => {
+                        setRefreshing(true)
+                        setTimeout(() => {
+                            setRefreshing(false)
+                        },2000)
+                    }}
+                />
+            }
+
+            onEndReached={() => {   //列表的属性
+                console.log("onEndReached...")
+            }}
         >
 
         </SectionList>
