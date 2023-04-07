@@ -31,6 +31,9 @@ import SectionListDemo from './src_demo/components/SectionListDemo';
 import ModalDemo from './src_demo/components/ModalDemo';
 import SwitchDemo from './src_demo/components/SwitchDemo';
 import TestApi from './src_demo/components/TestApi';
+import Anim1 from './src_demo/components/anim/Anim1';
+import PersonalInfo from './src_demo/components/PersonalInfo';
+import PersonalInfoDemo from './src_demo/components/PersonalInfoDemo';
 
 
 function App(): JSX.Element {
@@ -69,7 +72,10 @@ function App(): JSX.Element {
         {/* <SectionListDemo/> */}
         {/* <ModalDemo/> */}
         {/* <SwitchDemo/> */}
-        <TestApi/>
+        <PersonalInfo />
+        {/* <PersonalInfoDemo/> */}
+        {/* <TestApi/> */}
+        {/* <Anim1/> */}
       </View>
     </SafeAreaView>
   );
