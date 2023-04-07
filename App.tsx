@@ -35,6 +35,7 @@ import PersonalInfo from './src_demo/components/PersonalInfo';
 import PersonalInfoDemo from './src_demo/components/PersonalInfoDemo';
 import AnimDemo from './src_demo/components/AnimDemo';
 import AnimShow from './src_demo/components/AnimShow';
+import TsDemo from './src_demo/ts/TsDemo';
 
 
 function App(): JSX.Element {
@@ -76,8 +77,10 @@ function App(): JSX.Element {
         {/* <PersonalInfo /> */}
         {/* <PersonalInfoDemo/> */}
         {/* <TestApi/> */}
-        <AnimDemo/>
+        {/* <AnimDemo/> */}
         {/* <AnimShow/> */}
+
+        <TsDemo/>
       </View>
     </SafeAreaView>
   );
