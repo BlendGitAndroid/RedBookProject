@@ -9,8 +9,9 @@ import {
 
 import icon_avatar from '../assets/images/default_avatar.png';
 import { ThemeContext } from './ThemeContext';
+import withFloatButton from './withFloatButton';
 
-export default () => {
+export default withFloatButton(() => {
 
     //使用Context
     const theme = useContext(ThemeContext)
@@ -27,7 +28,7 @@ export default () => {
             </View>
         </View>
     );
-}
+})
 
 const darkStyles = StyleSheet.create({
     content: {
