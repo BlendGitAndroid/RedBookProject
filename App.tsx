@@ -37,6 +37,7 @@ import AnimDemo from './src_demo/components/AnimDemo';
 import AnimShow from './src_demo/components/AnimShow';
 import TsDemo from './src_demo/ts/TsDemo';
 import ContextView from './src_demo/context/ContextView';
+import MemoDemo from './src_demo/memo/MemoDemo';
 
 
 function App(): JSX.Element {
@@ -82,7 +83,8 @@ function App(): JSX.Element {
         {/* <AnimShow/> */}
 
         {/* <TsDemo/> */}
-        <ContextView />
+        {/* <ContextView /> */}
+        <MemoDemo />
       </View>
     </SafeAreaView>
   );
