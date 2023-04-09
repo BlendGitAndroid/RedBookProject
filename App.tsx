@@ -39,6 +39,7 @@ import TsDemo from './src_demo/ts/TsDemo';
 import ContextView from './src_demo/context/ContextView';
 import MemoDemo from './src_demo/memo/MemoDemo';
 import RefDemo from './src_demo/ref/RefDemo';
+import NativePage from './src_demo/native/NativePage';
 
 
 function App(): JSX.Element {
@@ -86,7 +87,9 @@ function App(): JSX.Element {
         {/* <TsDemo/> */}
         {/* <ContextView /> */}
         {/* <MemoDemo /> */}
-        <RefDemo />
+        {/* <RefDemo /> */}
+
+        <NativePage />
       </View>
     </SafeAreaView>
   );
