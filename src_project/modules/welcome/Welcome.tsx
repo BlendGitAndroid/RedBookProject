@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native"
 import { StackNavigationProp } from "@react-navigation/stack"
 
 import icon_logo from "../../assets/icon_main_logo.png"
+import { load } from '../../utils/Storage';
 
 export default () => {
 
@@ -11,12 +12,25 @@ export default () => {
 
     useEffect(() => {
         setTimeout(() => {
-            startLogin()
-        }, 3000)
+            getUserInfo()
+        }, 1500)
     }, [])
+
+    const getUserInfo = async () => {
+        const catchUserInfo = await load("userInfo")
+        if (catchUserInfo && JSON.parse(catchUserInfo)) {   //不为null且可以进行JSON解析
+            startHome()
+        } else {
+            startLogin()
+        }
+    }
 
     const startLogin = () => {
         navigation.replace("Login")
+    }
+
+    const startHome = () => {
+        navigation.replace("HomeTab")
     }
 
     return <View style={styles.root}>

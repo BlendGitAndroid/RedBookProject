@@ -1,5 +1,6 @@
 import { flow } from "mobx"
 import { request } from "../utils/Request"
+import { save } from "../utils/Storage"
 
 
 class UserStore {
@@ -41,6 +42,7 @@ class UserStore {
             }
             const { data } = yield request("login", params)
             if (data) {
+                save("userInfo", JSON.stringify(data))  //转换为string
                 this.userInfo = data
                 callback?.(true)
             } else {
