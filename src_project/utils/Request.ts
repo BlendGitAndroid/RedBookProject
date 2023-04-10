@@ -6,6 +6,7 @@ const instance = axios.create({
     timeout: 10 * 1000
 })
 
+// 拦截网络请求
 instance.interceptors.response.use(
     response => response,
     error => {
@@ -28,6 +29,7 @@ instance.interceptors.response.use(
     }
 )
 
+// 封装接口配置
 export const request = (name: string, params: any): Promise<AxiosResponse<any, any>> => {
     const api = (Apis as any)[name];
     const { url, method } = api;
