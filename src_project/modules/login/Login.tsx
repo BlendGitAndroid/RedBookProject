@@ -52,7 +52,7 @@ export default () => {
         UserStore.requestLogin(replaceBlank(phone), pwd, (success: boolean) => {
             if (success) {
                 ToastAndroid.show("登陆成功", ToastAndroid.SHORT)
-                navigation.replace('HomeTab');
+                navigation.replace('MainTab');
             } else {
                 ToastAndroid.show("登陆失败，请检查用户名和密码", ToastAndroid.SHORT)
             }

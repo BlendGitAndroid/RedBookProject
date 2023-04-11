@@ -7,7 +7,7 @@ import {
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Welcome from './src_project/modules/welcome/Welcome';
 import Login from './src_project/modules/login/Login';
-import HomeTab from './src_project/modules/home/HomeTab';
+import MainTab from './src_project/modules/mainTab/MainTab';
 
 
 const Stack = createStackNavigator();
@@ -48,8 +48,8 @@ function App(): JSX.Element {
           />
 
           <Stack.Screen
-            name='HomeTab'
-            component={HomeTab}
+            name='MainTab'
+            component={MainTab}
             options={{
               headerShown: false,
               ...TransitionPresets.SlideFromRightIOS
