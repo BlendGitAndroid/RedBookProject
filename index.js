@@ -3,7 +3,8 @@
  */
 
 import { AppRegistry, Platform, UIManager } from 'react-native';
-// import App from './AppDemo';
+// import App from './AppDemo'; 
+// import App from './AppAccount';
 import App from './AppProject';
 import { name as appName } from './app.json';
 
