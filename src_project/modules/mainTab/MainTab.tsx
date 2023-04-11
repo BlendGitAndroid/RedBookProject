@@ -19,6 +19,7 @@ import Mine from '../mine/Mine';
 
 
 import icon_tab_publish from '../../assets/icon_tab_publish.png';
+import { launchImageLibrary, ImagePickerResponse } from 'react-native-image-picker';
 
 export default () => {
 
@@ -26,7 +27,25 @@ export default () => {
         const { routes, index } = state;
 
         const onPublishPress = () => {
-
+            launchImageLibrary(
+                {
+                    mediaType: "photo",
+                    quality: 1,
+                    includeBase64: true
+                },
+                (res: ImagePickerResponse) => {
+                    const { assets } = res;
+                    if (!assets?.length) {  //如果图片的长度没有，就是false
+                        console.log('选择图片失败');
+                        return;
+                    }
+                    const {
+                        uri, width, height, fileName, fileSize, type
+                    } = assets[0];
+                    console.log(`uri=${uri}, width=${width}, height=${height}`);
+                    console.log(`fileName=${fileName}, fileSize=${fileSize}, type=${type}`);
+                }
+            )
         }
 
         return (
