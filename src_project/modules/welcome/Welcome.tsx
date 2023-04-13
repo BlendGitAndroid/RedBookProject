@@ -13,7 +13,7 @@ export default () => {
     useEffect(() => {
         setTimeout(() => {
             getUserInfo()
-        }, 1500)
+        }, 500)
     }, [])
 
     const getUserInfo = async () => {
