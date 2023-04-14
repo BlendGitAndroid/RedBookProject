@@ -19,6 +19,8 @@ import icon_new_follow from '../../assets/icon_new_follow.png';
 import icon_comments from '../../assets/icon_comments.png';
 import icon_group from '../../assets/icon_group.png';
 import icon_to_top from '../../assets/icon_to_top.png';
+import Empty from '../../components/Empty';
+import icon_no_collection from '../../assets/icon_no_collection.webp';
 
 export default observer(() => {
 
@@ -189,6 +191,7 @@ export default observer(() => {
                 keyExtractor={(item) => `${item.id}`}
                 renderItem={renderItem}
                 ListHeaderComponent={<Header />}
+                ListEmptyComponent={<Empty icon={icon_no_collection} tips="暂无消息" />}    //设置空消息提醒
             />
             <FloatMenu ref={ref} />
         </View>
