@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Welcome from './src_project/modules/welcome/Welcome';
 import Login from './src_project/modules/login/Login';
 import MainTab from './src_project/modules/mainTab/MainTab';
+import ArticleDetail from './src_project/modules/articleDetail/ArticleDetail';
 
 
 const Stack = createStackNavigator();
@@ -50,6 +51,15 @@ function App(): JSX.Element {
           <Stack.Screen
             name='MainTab'
             component={MainTab}
+            options={{
+              headerShown: false,
+              ...TransitionPresets.SlideFromRightIOS
+            }}
+          />
+
+          <Stack.Screen
+            name='ArticleDetail'
+            component={ArticleDetail}
             options={{
               headerShown: false,
               ...TransitionPresets.SlideFromRightIOS

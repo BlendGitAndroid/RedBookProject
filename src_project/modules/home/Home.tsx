@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {
     View,
     Text,
     StyleSheet,
     Dimensions,
     Image,
+    TouchableOpacity
 } from 'react-native'
 
 import { useLocalStore, observer } from 'mobx-react';
@@ -14,6 +15,8 @@ import FlowList from "../../components/flowlist/FlowList.js"
 import Heart from '../../components/Heart';
 import TitleBar from './TitleBar';
 import CategoryList from './CategoryList';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window")    //重命名成SCREEN_WIDTH
 
@@ -21,6 +24,8 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window")    //重命名成SCREEN
 export default observer(() => {
 
     const store = useLocalStore(() => new HomeStore())
+
+    const navigation = useNavigation<StackNavigationProp<any>>();
 
     useEffect(() => {
         store.requestHomeList()
@@ -36,8 +41,16 @@ export default observer(() => {
         store.requestHomeList()
     }
 
+    const onArticlePress = useCallback((item: ArticleSimple) => () => {
+        navigation.push("ArticleDetail", { id: item.id })   //通过这种方式传值
+    }, [])
+
     const renderItem = ({ item }: { item: ArticleSimple }) => {
-        return <View style={styles.item}>
+        return <TouchableOpacity
+            onPress={
+                onArticlePress(item)
+            }
+            style={styles.item}>
             <ResizeImage uri={item.avatarUrl} />
             <Text style={styles.titleTxt}>{item.title}</Text>
             <View style={styles.nameLayout}>
@@ -47,7 +60,7 @@ export default observer(() => {
 
                 }}></Heart>
             </View>
-        </View>
+        </TouchableOpacity>
     }
 
     const Foorer = () => {

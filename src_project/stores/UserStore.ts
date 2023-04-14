@@ -1,4 +1,4 @@
-import { flow } from "mobx"
+import { action, flow } from "mobx"
 import { request } from "../utils/Request"
 import { save } from "../utils/Storage"
 
@@ -54,6 +54,12 @@ class UserStore {
             callback?.(false)
         }
     })
+
+
+    @action
+    setUserInfo = (info: any) => {
+        this.userInfo = info;
+    }
 
 }
 

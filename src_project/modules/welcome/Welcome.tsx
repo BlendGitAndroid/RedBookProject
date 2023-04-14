@@ -5,6 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack"
 
 import icon_logo from "../../assets/icon_main_logo.png"
 import { load } from '../../utils/Storage';
+import UserStore from '../../stores/UserStore';
 
 export default () => {
 
@@ -18,10 +19,16 @@ export default () => {
 
     const getUserInfo = async () => {
         const catchUserInfo = await load("userInfo")
-        if (catchUserInfo && JSON.parse(catchUserInfo)) {   //不为null且可以进行JSON解析
-            startHome()
-        } else {
+        if (!catchUserInfo) {
             startLogin()
+        } else {
+            const parse = JSON.parse(catchUserInfo)
+            if (parse) {
+                UserStore.setUserInfo(parse)
+                startHome() //不为null且可以进行JSON解析
+            } else {
+                startLogin()
+            }
         }
     }
 
