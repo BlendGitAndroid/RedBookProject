@@ -9,6 +9,7 @@ import Welcome from './src_project/modules/welcome/Welcome';
 import Login from './src_project/modules/login/Login';
 import MainTab from './src_project/modules/mainTab/MainTab';
 import ArticleDetail from './src_project/modules/articleDetail/ArticleDetail';
+import SearchGoods from './src_project/modules/searchGoods/SearchGoods';
 
 
 const Stack = createStackNavigator();
@@ -63,6 +64,15 @@ function App(): JSX.Element {
             options={{
               headerShown: false,
               ...TransitionPresets.SlideFromRightIOS
+            }}
+          />
+
+          <Stack.Screen
+            name='SearchGoods'
+            component={SearchGoods}
+            options={{
+              headerShown: false,
+              presentation: 'transparentModal', //这里采用透明模式，来分别实现购物页和搜索页的展示
             }}
           />
 
