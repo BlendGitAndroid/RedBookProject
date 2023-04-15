@@ -13,6 +13,8 @@ import com.redbookproject.rn.RedBookPackage;
 
 import java.util.List;
 
+import cn.reactnative.modules.update.UpdateContext;
+
 public class MainApplication extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost = new DefaultReactNativeHost(this) {
@@ -33,6 +35,12 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected String getJSMainModuleName() {
             return "index";
+        }
+
+        //Pushy热更新
+        @Override
+        protected String getJSBundleFile() {
+            return UpdateContext.getBundleUrl(MainApplication.this);
         }
 
         @Override

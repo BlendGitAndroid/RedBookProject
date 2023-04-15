@@ -5,7 +5,9 @@ import {
     StyleSheet,
     Dimensions,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform,
+    Alert
 } from 'react-native'
 
 import { useLocalStore, observer } from 'mobx-react';
@@ -17,8 +19,13 @@ import TitleBar from './TitleBar';
 import CategoryList from './CategoryList';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { checkUpdate, downloadUpdate, switchVersion, switchVersionLater, isFirstTime, markSuccess, isRolledBack } from 'react-native-update';
+import _updateConfig from '../../../update.json';
+import { save } from '../../utils/Storage';
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window")    //重命名成SCREEN_WIDTH
+
+const { appKey } = _updateConfig[Platform.OS];
 
 //这里要添加观察者
 export default observer(() => {
@@ -30,7 +37,60 @@ export default observer(() => {
     useEffect(() => {
         store.requestHomeList()
         store.getCategroyList()
+
+        //热更新
+        checkPatch()
+
+        if (isFirstTime) {  //在每次更新完毕后的首次启动时，isFirstTime常量会为true
+            markSuccess();  //在应用退出前合适的任何时机，调用markSuccess，否则应用下一次启动的时候将会进行回滚操作
+            // 补丁成功，上报服务器信息
+            // 补丁安装成功率：99.5% ~ 99.7%
+        } else if (isRolledBack) {
+            // 补丁回滚，上报服务器信息
+        }
     }, [])
+
+    // 检查补丁更新
+    const checkPatch = async () => {
+        // 返回的info有三种情况：
+        // {expired: true}：该应用原生包已过期
+        // {upToDate: true}：当前已经更新到最新，无需进行更新
+        // {update: true}：当前有新版本可以更新
+        const info: any = await checkUpdate(appKey);
+        const { update, name, description, metaInfo } = info;
+        if (update) {   //如果有更新
+            const hash = await downloadUpdate(
+                info,
+                {
+                    onDownloadProgress: ({ received, total }) => { },
+                },
+            );
+            if (hash) { //如果这个hash不为空
+                const metaJson = JSON.parse(metaInfo);  //将string转换为对象
+                save('patchVersion', name); //保存版本信息
+                const { forceUpdate } = metaJson;
+                if (forceUpdate) {  //是否强制更新
+                    Alert.alert('提示', '下载完毕,是否重启应用?', [
+                        {
+                            text: '是',
+                            onPress: () => {
+                                switchVersion(hash);
+                            },
+                        },
+                        { text: '否' },
+                        {
+                            text: '下次启动时',
+                            onPress: () => {
+                                switchVersionLater(hash);
+                            },
+                        },
+                    ]);
+                } else {
+                    switchVersionLater(hash);
+                }
+            }
+        }
+    }
 
     const refreshNewData = () => {
         store.resetPage()

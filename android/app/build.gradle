@@ -107,7 +107,7 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include (*reactNativeArchitectures())
+            include(*reactNativeArchitectures())
         }
     }
     signingConfigs {
@@ -128,6 +128,10 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            // 添加下面这行以禁用crunch
+            // android 会在生成 apk 时自动对 png 图片进行压缩，此操作既耗时又影响增量补丁的生成
+            crunchPngs false
         }
     }
 
@@ -173,7 +177,7 @@ dependencies {
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
