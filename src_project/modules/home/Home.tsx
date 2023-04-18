@@ -38,15 +38,18 @@ export default observer(() => {
         store.requestHomeList()
         store.getCategroyList()
 
-        //热更新
-        checkPatch()
+        //Pushy只能在正式环境中
+        if (!__DEV__) {
+            //检查热更新
+            checkPatch()
 
-        if (isFirstTime) {  //在每次更新完毕后的首次启动时，isFirstTime常量会为true
-            markSuccess();  //在应用退出前合适的任何时机，调用markSuccess，否则应用下一次启动的时候将会进行回滚操作
-            // 补丁成功，上报服务器信息
-            // 补丁安装成功率：99.5% ~ 99.7%
-        } else if (isRolledBack) {
-            // 补丁回滚，上报服务器信息
+            if (isFirstTime) {  //在每次更新完毕后的首次启动时，isFirstTime常量会为true
+                markSuccess();  //在应用退出前合适的任何时机，调用markSuccess，否则应用下一次启动的时候将会进行回滚操作
+                // 补丁成功，上报服务器信息
+                // 补丁安装成功率：99.5% ~ 99.7%
+            } else if (isRolledBack) {
+                // 补丁回滚，上报服务器信息
+            }
         }
     }, [])
 
