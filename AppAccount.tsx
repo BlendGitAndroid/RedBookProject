@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import {
     SafeAreaView,
@@ -12,7 +5,7 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import AccountHome from "./src_account/components/AccountHome"
+import AccountManager from "./src_account/components/AccountManager.js"
 
 function App(): JSX.Element {
 
@@ -24,7 +17,7 @@ function App(): JSX.Element {
             />
 
             <View style={styles.container}>
-                <AccountHome />
+                <AccountManager />
             </View>
         </SafeAreaView>
     );
