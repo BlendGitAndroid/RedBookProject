@@ -24,6 +24,11 @@ export default () => {
 
     //使用useMemo，当data数据没有改变的时候，就不重复计算，返回的是一个值，
     //并赋值给calculateTotal，而不是一个方法
+
+    //map() 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
+
+    //reduce() 方法对数组中的每个元素按序执行一个由您提供的 reducer 函数，每一次运行 reducer 会将先前元素
+    //的计算结果作为参数传入，最后将其结果汇总为单个返回值。
     const calculateTotal = useMemo(() => {
         console.log("重新计算合计")
         return data.map((item: any) => {

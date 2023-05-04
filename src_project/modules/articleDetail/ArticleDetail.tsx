@@ -43,6 +43,9 @@ export default observer(() => {
     const store = useLocalStore(() => new ArticleDetailStore());
 
     //使用useRoute来获取上一个界面的传值
+    //route 对象和 navigation 对象类似，函数组件默认是没有这两个对象的。
+    //当你使用 Stack.Screen 创建页面时，用来创建页面的函数组件就会同时获取到 navigation 对象和 route 对象。
+    //其中 navigation 对象的主要作用是跳转，route 对象的主要作用是携带自定义参数。
     const { params } = useRoute<RouteProp<RouteParams, 'ArticleDetail'>>();
 
     const navigation = useNavigation<StackNavigationProp<any>>();

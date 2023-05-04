@@ -257,13 +257,16 @@ export default () => {
             <Button
                 onPress={() => {
                     //在开始和结束做动画状态的转换
-                    LayoutAnimation.configureNext(
-                        // LayoutAnimation.Presets.linear 
-                        LayoutAnimation.Presets.spring,  //弹跳
-                        () => {
-                            ToastAndroid.show("动画结束", ToastAndroid.SHORT)
-                        }
-                    )
+                    // LayoutAnimation.configureNext(
+                    //     // LayoutAnimation.Presets.linear 
+                    //     LayoutAnimation.Presets.spring,  //弹跳
+                    //     () => {
+                    //         ToastAndroid.show("动画结束", ToastAndroid.SHORT)
+                    //     }
+                    // )
+
+                    //下面的是简单的写法
+                    LayoutAnimation.spring()
                     setShowView(!showView)
                 }}
                 color={"red"}
@@ -389,7 +392,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
     layoutRoot: {
-        height: 200,
+        height: 100,
         width: "100%",
         alignItems: "center",
         justifyContent: "center",

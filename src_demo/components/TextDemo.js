@@ -19,7 +19,7 @@ export default () => {
             allowFontScaling={true}
         >我在好好学习，Blend加油，你要好好学习
             <Text style={styles.innerText}>写文字</Text>
-            写文字写文字写文字写文字写文字</Text>
+            写文字写文字写文字写文字写文字写文字写文字写文字写文字写文字</Text>
     </View>
 }
 

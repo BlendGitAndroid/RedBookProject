@@ -29,13 +29,12 @@ const styles = StyleSheet.create({
     },
     viewStyle: {
         width: "100%",
-        height: 150,
         flexDirection: "row",
         alignItems: "flex-start"
     },
     imgStyle: {
         resizeMode: 'cover',
-        borderRadius: 12,
+        borderRadius: 15,
     },
     icon_logo: {
         width: 48,
@@ -48,6 +47,7 @@ const styles = StyleSheet.create({
         color: "white",
         marginLeft: 10,
         marginTop: 21,
+        marginBottom: 10,
         fontWeight: "bold",
     },
     cardTypeText: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         fontWeight: "normal",
     },
     cardNoTxt: {
-        fontSize: 26,
+        fontSize: 16,
         fontWeight: "bold",
     }
 

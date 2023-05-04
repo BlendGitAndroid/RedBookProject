@@ -38,7 +38,7 @@ export default () => {
                 console.log(text) 
             }}
             textAlign="center"
-            secureTextEntry={true}
+            secureTextEntry={true}  //密文显示
         />
     </View>
 }

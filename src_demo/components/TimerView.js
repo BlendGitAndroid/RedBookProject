@@ -15,8 +15,9 @@ export default () => {
      */
     useEffect(() => {
         const interval = setInterval(() => {
-            //这样写是有问题的,会导致count不会改变，因为初始值都是0，并没有加1
+            //这样写是有问题的,会导致count不会改变，因为setInterval第一个函数是闭包，闭包读取外部的count值，就会有闭包过时的问题，初始值都是0，并没有加1
             // setCount(count + 1)
+            //改成下面这样，data获取的始终是count最新的值，就不会过期
             setCount((data) => {
                 return data + 1;
             })

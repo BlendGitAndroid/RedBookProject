@@ -62,7 +62,7 @@ function App(): JSX.Element {
       <View style={styles.container}>
         {/* {showClassView && <ClassView/>} */}
         {/* <FunctionView name = "Blend" age = {30}></FunctionView> */}
-        {/* {<TimerView/>} */}
+        {/* {<TimerView />} */}
         {/* <TextDemo /> */}
         {/* <ImageDemo /> */}
         {/* <ImageBackgroundDemo/> */}

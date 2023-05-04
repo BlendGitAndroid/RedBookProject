@@ -21,7 +21,7 @@ import icon_bank from '../assets/icon_bank.png';
 import icon_other from '../assets/icon_other.png';
 import icon_arrow from '../assets/icon_arrow.png';
 
-//这个是es6的map，与对象区别
+//创建一个对象，可以使用person.property 或 person["property"]这两种方式来获取
 const iconMap = {
     '游戏': icon_game,
     '平台': icon_platform,
@@ -31,10 +31,13 @@ const iconMap = {
 
 export default () => {
 
+    //弹框属性ref
     const addAccountRef = useRef(null);
 
+    //帐号密码数据
     const [sectionData, setSectionData] = useState([]);
 
+    //是否全部显示，这也是一个对象
     const [sectionState, setSectionState] = useState({
         '游戏': true,
         '平台': true,
@@ -52,11 +55,13 @@ export default () => {
         load('accountList').then(data => {
             const accountList = JSON.parse(data);
 
+            //获取四种类型
             const gameList = accountList.filter(item => item.type === '游戏') || [];
             const platformList = accountList.filter(item => item.type === '平台') || [];
             const bankList = accountList.filter(item => item.type === '银行卡') || [];
             const otherList = accountList.filter(item => item.type === '其它') || [];
 
+            //sectionList的布局要求
             const sectionData = [
                 { type: '游戏', data: gameList },
                 { type: '平台', data: platformList },
@@ -64,8 +69,11 @@ export default () => {
                 { type: '其它', data: otherList }
             ];
 
+            //这个布局动画在变化之前
             LayoutAnimation.easeInEaseOut();
             setSectionData(sectionData);
+        }).catch(e => {
+            console.log(e)
         });
     }
 
@@ -85,7 +93,7 @@ export default () => {
     }
 
     const renderItem = ({ item, index, section }) => {
-        if (!sectionState[section.type]) {
+        if (!sectionState[section.type]) {  //如果不显示数据，则不渲染
             return null;
         }
         return (
@@ -126,7 +134,7 @@ export default () => {
             <View style={[
                 styles.groupHeader,
                 {
-                    borderBottomLeftRadius: (!section.data.length || !sectionState[section.type]) ? 12 : 0,
+                    borderBottomLeftRadius: (!section.data.length || !sectionState[section.type]) ? 12 : 0, //如果没有数据或者被关起来，就显示下方的圆角
                     borderBottomRightRadius: (!section.data.length || !sectionState[section.type]) ? 12 : 0
                 }
             ]}>
@@ -137,14 +145,14 @@ export default () => {
                     onPress={() => {
                         const copy = { ...sectionState };
                         copy[section.type] = !copy[section.type];
-                        LayoutAnimation.easeInEaseOut();
+                        LayoutAnimation.easeInEaseOut();    //在值被改变之前调用布局动画
                         setSectionState(copy);
                     }}
                 >
                     <Image
                         style={[
                             styles.arrowImg,
-                            { transform: [{ rotate: sectionState[section.type] ? '0deg' : '-90deg' }] }
+                            { transform: [{ rotate: sectionState[section.type] ? '0deg' : '-90deg' }] } //如果是被合起来，就不旋转
                         ]}
                         source={icon_arrow}
                     />
@@ -175,6 +183,7 @@ export default () => {
                 <Image style={styles.addImg} source={icon_add} />
             </TouchableOpacity>
 
+            {/* 回调的方法 */}
             <AddAccount ref={addAccountRef} onSave={() => loadData()} />
         </View>
     );

@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     imgContain: {
         width: 160,
         height: 100,
-        resizeMode: "contain"
+        resizeMode: "contain"   //保持宽高比
     },
     imgTintColor: {
         width: 240,

@@ -8,6 +8,7 @@ export default () => {
         return n1 + n2
     }
 
+    //onButtonPress是一个函数，他是一个无参，并且没有返回值的函数
     const onButtonPress: () => void = () => {
 
         const num1: number = 12

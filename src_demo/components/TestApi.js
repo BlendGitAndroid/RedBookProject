@@ -155,6 +155,15 @@ export default () => {
 
         <Button
             onPress={() => {
+                Keyboard.dismiss()
+            }}
+            color={"pink"}
+            title="keyboard"
+        >
+        </Button>
+
+        <Button
+            onPress={() => {
                 Vibration.vibrate(1000, true);
             }}
             color={"red"}
@@ -178,15 +187,6 @@ export default () => {
             }}
             color={"orange"}
             title="transForm"
-        >
-        </Button>
-
-        <Button
-            onPress={() => {
-                Keyboard.dismiss()
-            }}
-            color={"pink"}
-            title="keyboard"
         >
         </Button>
 

@@ -30,6 +30,7 @@ export default (props) => {
     // 获取到控件的引用
     const scrollViewRef = useRef(null)
 
+    //在屏幕尺寸变化时自动更新获取到的设备width和height值
     const { width, height } = useWindowDimensions()
     const colorSchme = useColorScheme()
     console.log(`width = ${width}, height = ${height}, colorSchme = ${colorSchme}`)
@@ -69,7 +70,7 @@ export default (props) => {
                     //     )
                     // })
 
-                    array.map(item => <Text style={{ fontSize: 20, color: "white" }}>{item}</Text>)
+                    array.map((item, index) => <Text key={index} style={{ fontSize: 20, color: "white" }}>{item}</Text>)
                 }
             </ScrollView>
         )

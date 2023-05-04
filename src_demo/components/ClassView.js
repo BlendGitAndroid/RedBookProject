@@ -20,7 +20,7 @@ class ClassView extends React.Component {
         },2000)
     }
 
-    //执行componentWillUnmount
+    //执行componentWillUnmount，在组件去除时执行
     componentWillUnmount() {
         console.log("componentWillUnmount...")
     }

@@ -33,6 +33,7 @@ export default forwardRef((props, ref) => {
 
     const [password, setPassword] = useState('');
 
+    //根据入参来判断是编辑还是新增
     const show = (currentAccount) => {
         setVisible(true);
 
@@ -150,7 +151,7 @@ export default forwardRef((props, ref) => {
                 borderBottomRightRadius: 8,
             },
             moveLeft1Pix: {
-                marginLeft: -1,
+                marginLeft: -1, //这里的-1，是回退1像素，防止叠加变粗，从第二个模块开始向左移动一个像素
             },
             tabTxt: {
                 fontSize: 14,
@@ -161,7 +162,7 @@ export default forwardRef((props, ref) => {
 
         return (
             <View style={styles.typesLayout}>
-                {typesArray.map((item, index) => {
+                {typesArray.map((item, index) => {  //这里选择便利的方式
                     return (
                         <TouchableOpacity
                             style={[
@@ -207,8 +208,8 @@ export default forwardRef((props, ref) => {
             <TextInput
                 style={styles.input}
                 maxLength={20}
-                value={name}
-                onChangeText={text => {
+                value={name}    //name值的改变也回写到输入框
+                onChangeText={text => { //输入框的输出，赋值到name上
                     setName(text || '');
                 }}
             />
@@ -301,7 +302,7 @@ export default forwardRef((props, ref) => {
             statusBarTranslucent={true}
             animationType='fade'
         >
-            <KeyboardAvoidingView
+            <KeyboardAvoidingView   //为了使软键盘不遮挡输入框
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.root}
             >

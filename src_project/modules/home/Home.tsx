@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useLayoutEffect } from 'react';
 import {
     View,
     Text,
@@ -22,6 +22,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { checkUpdate, downloadUpdate, switchVersion, switchVersionLater, isFirstTime, markSuccess, isRolledBack } from 'react-native-update';
 import _updateConfig from '../../../update.json';
 import { save } from '../../utils/Storage';
+import { useLayout } from '@react-native-community/hooks';
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window")    //重命名成SCREEN_WIDTH
 
@@ -32,7 +33,17 @@ export default observer(() => {
 
     const store = useLocalStore(() => new HomeStore())
 
+    // 函数组件默认是没有 navigation 对象的
+    // 当函数组件通过 Stack.Screen 生成页面时，才会有 navigation 对象
     const navigation = useNavigation<StackNavigationProp<any>>();
+
+    // 在初始化时，为了页面不抖动，必须使用同步的方法渲染页面
+    // 更新单个界面的navigation的Options
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        })
+    }, [navigation])
 
     useEffect(() => {
         store.requestHomeList()
