@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         backgroundColor:"white",
         textAlign:"center",
+        textAlignVertical: "center",
+        includeFontPadding: false   //不写下面两个，Android系统上文字会偏下
     },
     innerText: {
         color: "blue",

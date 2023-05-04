@@ -19,6 +19,8 @@ import InfoCard from "./InfoCard";
 //     )
 // }
 
+// 原始数据类型而言，调用 setAddress 更新原始数据类型状态的值，页面就会发生更新。
+// 对于对象状态的更新，我先创建了一个新对象{}，然后用...的解构的方式将老对象 countObject 的内部值重新赋值给了新对象{}，对于数组状态的更新也是类似的
 export default (props) => {
 
     const { name, age } = props;
