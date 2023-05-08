@@ -52,9 +52,9 @@ export default () => {
     }
 
     //可选
-    // const onButtonPress3: (age: Number, s?: string) => void = (age: Number = 5, s?: string) => {
-    //     console.log(age + (s || "没有值"))
-    // }
+    const onButtonPress33: (age: Number, s?: string) => void = (age: Number = 5, s?: string) => {
+        console.log(age + (s || "没有值"))
+    }
 
     //这样写的话，就不用写函数定义了，会冲突。下面这样下，会推断出来
     const onButtonPress3 = (age: Number = 5, s?: string) => {
@@ -73,7 +73,7 @@ export default () => {
 
     const onButtonPress5: () => void = () => {
         const dog: Info.Dog = {
-            name: "大黄",
+            name: "命名空间",
             age: 12,
             weight: 20
         } as Info.Dog

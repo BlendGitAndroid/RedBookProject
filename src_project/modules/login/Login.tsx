@@ -34,6 +34,7 @@ import UserStore from '../../stores/UserStore';
 
 export default () => {
 
+    //设置可以输入的参数和默认值
     const [loginType, setLoginType] = useState<'quick' | 'input'>('quick');
     const [check, setCheck] = useState<boolean>(false);
     const [eyeOpen, setEyeOpen] = useState<boolean>(true);

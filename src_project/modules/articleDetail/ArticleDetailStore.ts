@@ -4,6 +4,8 @@ import Loading from "../../components/widget/Loading";
 
 export default class ArticleDetailStore {
 
+    //把{}转化为Article类型（as类型转换）
+    //初始化数组或稍后填充的空对象
     @observable detail: Article = {} as Article;
 
     requestArticleDetail = async (id: number) => {
