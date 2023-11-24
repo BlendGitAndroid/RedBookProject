@@ -60,7 +60,7 @@ function App(): JSX.Element {
       />
 
       <View style={styles.container}>
-        {/* {showClassView && <ClassView/>} */}
+        {/* {showClassView && <ClassView />} */}
         {/* <FunctionView name = "Blend" age = {30}></FunctionView> */}
         {/* {<TimerView />} */}
         {/* <TextDemo /> */}
@@ -69,27 +69,30 @@ function App(): JSX.Element {
         {/* <TextInputDemo/> */}
 
         {/* 四种按钮组件 */}
-        {/* <TouchableOpacityDemo/> */}
+        {/* <TouchableOpacityDemo /> */}
         {/* <TouchableHighLightDemo/> */}
         {/* <ButtonDemo/> */}
         {/* <PressableDemo/> */}
+
         {/* <ScrollViewDemo/> */}
         {/* <FlatListViewDemo/> */}
         {/* <SectionListDemo/> */}
+
         {/* <ModalDemo/> */}
         {/* <SwitchDemo/> */}
         {/* <PersonalInfo /> */}
         {/* <PersonalInfoDemo/> */}
-        {/* <TestApi/> */}
+        {/* <TestApi /> */}
+
         {/* <AnimDemo/> */}
         {/* <AnimShow/> */}
 
-        {/* <TsDemo/> */}
+        <TsDemo/>
         {/* <ContextView /> */}
         {/* <MemoDemo /> */}
         {/* <RefDemo /> */}
 
-        <NativePage />
+        {/* <NativePage /> */}
       </View>
     </SafeAreaView>
   );

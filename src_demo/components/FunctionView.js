@@ -48,14 +48,26 @@ export default (props) => {
         console.log(`address = ${address}`)
     }, [address])
 
-    //简单写法
-    const renderPrps = () => (
+    //箭头函数，块体:定义的是一个函数，返回的是一个组件，这里的组件定义就是() => {}，
+    //还有简单的写法,若只有一行代码,可以省略return
+    //若没有入参,可以省略()=>{},只保留代码块
+    //和kotlin的函数参数类似,只不过kolint的是{}包裹起来的
+    const renderPrps = () => {
         <Text style={{ fontSize: 20, color: "white" }}>
             {
                 `name= ${name}, age= ${age}, 地址= ${address}`
             }
         </Text>
-    )
+    }
+
+    // 如果箭头函数函数体只有一句话，那么这个句话可以不带大括号，而且这句话就是返回值（可以不用写return）,所有上面这句代码不写大括号也是可以的
+
+    // 记住用params => {object:literal}这种简单的语法返回对象字面量是行不通的。
+    // 这是因为花括号()里面的代码被解析为一系列语句(即 foo 被认为是一个标签，而非对象字面星的组成部分)。
+    var func1 = () => { foo: 1 }
+
+    // 所以，记得用圆括号把对象字面量包起来
+    var func2 = () => ({foo: 11});
 
     const array = ["AAA", "BBB", "CCC", "DDD", "EEE", "FFF", "GGG"]
 
@@ -70,6 +82,9 @@ export default (props) => {
                     //     )
                     // })
 
+                    // 数组对象的一个内置方法，用于对数组中的每个元素进行操作，并返回一个新的数组
+                    // js函数调用，没有指定数据类型/没有对类型进行检测/没有对个数进行检查
+                    // 如果未对函数参数进行赋值，需要对参数进行检查
                     array.map((item, index) => <Text key={index} style={{ fontSize: 20, color: "white" }}>{item}</Text>)
                 }
             </ScrollView>

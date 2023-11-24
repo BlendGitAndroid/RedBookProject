@@ -31,7 +31,7 @@ instance.interceptors.response.use(
 
 // 封装接口配置
 export const request = (name: string, params: any): Promise<AxiosResponse<any, any>> => {
-    const api = (Apis as any)[name];
+    const api = (Apis as any)[name]; 
     const { url, method } = api;
     if (method === 'get') {
         return get(url, params);

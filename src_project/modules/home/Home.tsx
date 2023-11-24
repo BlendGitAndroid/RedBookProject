@@ -28,7 +28,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window")    //重命名成SCREEN
 
 const { appKey } = _updateConfig[Platform.OS];
 
-//这里要添加观察者
+//这里要添加观察者，带有观测着的react组件或者属性被mobx实时观测
 export default observer(() => {
 
     const store = useLocalStore(() => new HomeStore())

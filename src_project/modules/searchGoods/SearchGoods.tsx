@@ -15,6 +15,7 @@ import icon_search from '../../assets/icon_search.png';
 import icon_arrow from '../../assets/icon_arrow.png';
 
 //这里采用整个布局透明的方式，来实现搜索界面，也是一种思路
+//直接覆盖到原始界面上，presentation: 'transparentModal'
 export default () => {
 
     const inputRef = useRef<TextInput>(null);
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     },
     titleLayout: {
         width: '100%',
-        height: 40,
+        height: 40, // 高度直接写死
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: 'white',

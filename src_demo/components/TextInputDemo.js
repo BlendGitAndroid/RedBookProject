@@ -4,11 +4,12 @@ import { StyleSheet, Image, ImageBackground, View, Text, TextInput } from "react
 //样式和Text一样
 export default () => {
 
+    // 获取焦点
     const inputRef = useRef(null)
 
     useEffect(() => {
         setTimeout(() => {
-            //blur失去焦点
+            //blur获取焦点
             inputRef.current.focus()
         }, 2000)
     }, [])
@@ -18,6 +19,7 @@ export default () => {
             ref={inputRef}
             style={styles.input}
             autoFocus={false}
+            // 如果为 true，文本框会在提交的时候失焦。
             blurOnSubmit={true}
             // caretHidden={true}  //隐藏光标
             defaultValue="请输入"
@@ -32,13 +34,13 @@ export default () => {
 
             }}
             onChange={(event) => {
-                console.log(event.nativeEvent) 
-            }}  
+                console.log(event.nativeEvent)
+            }}
             onChangeText={(text) => {
-                console.log(text) 
+                console.log(text)
             }}
             textAlign="center"
-            secureTextEntry={true}  //密文显示
+            secureTextEntry={false}  //密文显示
         />
     </View>
 }

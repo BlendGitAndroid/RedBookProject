@@ -6,7 +6,7 @@ import { SectionData } from '../constants/Data';
 //Dialog按钮
 export default () => {
 
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
 
     const renderItem = ({ item, index, section }) => {
         return <Text style={styles.txt}>{item}</Text>
@@ -24,10 +24,15 @@ export default () => {
             setVisible(true)
         }}></Button>
 
+{/* animationType指定了 modal 的动画类型。
+
+slide 从底部滑入滑出。
+fade 淡入淡出。
+none 没有动画，直接蹦出来。 */}
         <Modal
             visible={visible}
             onRequestClose={() => { setVisible(false) }} //点击返回按钮触发
-            transparent={true}
+            transparent={true}  //透明背景
             statusBarTranslucent={true} //沉浸式状态栏
             animationType="slide"   //动画方式
             onShow={() => {
@@ -63,7 +68,7 @@ const styles = StyleSheet.create({
     },
     blank: {
         width: '100%',
-        height: '10%',
+        height: '10%',  //这里的高度是相对于父容器的高度
         backgroundColor: '#00000050',
     },
     content: {

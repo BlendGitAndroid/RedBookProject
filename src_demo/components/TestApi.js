@@ -10,6 +10,7 @@ export default () => {
 
         BackHandler.addEventListener("hardwareBackPress", backForAndroid)
 
+        // 监听软键盘事件
         const showSubscription = Keyboard.addListener("keyboardDidShow", onKoardDidShow)
         const hideSubscription = Keyboard.addListener("keyboardDidHide", onKoardDidHidden)
 
@@ -21,8 +22,12 @@ export default () => {
 
     }, [])
 
-
+    // 监听安卓返回键
     const backForAndroid = () => {
+        Alert.alert('提示', '确定要退出应用吗？', [
+            { text: '取消', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+            { text: '确定', onPress: () => BackHandler.exitApp() },
+        ]);
         return true;
     }
 
@@ -35,9 +40,10 @@ export default () => {
     }
 
     //第三方hook库, 和BackHandler.addEventListener是一样的
-    useBackHandler(() => {
-        return true
-    })
+    //用于简化使用 `hardwareBackPress` 事件的操作
+    // useBackHandler(() => {
+    //     return true
+    // })
 
 
     return <View style={styles.root}>
@@ -122,7 +128,7 @@ export default () => {
 
         <Button
             onPress={() => {
-                BackHandler.exitApp() //直接回到主界面
+                BackHandler.exitApp() //直接回到主界面，相当于按home键
             }}
             color={"pink"}
             title="BackHandler"
@@ -198,9 +204,9 @@ export default () => {
             { width: 100, height: 100, backgroundColor: "#3050ff", marginTop: 20 },
             {
                 transform: [
-                    { translateX: 20 },
-                    { translateY: 20 },
-                    { scale: 1.1 },
+                    { translateX: 20 }, // X轴平移
+                    { translateY: 20 }, // Y轴平移
+                    { scale: 1.1 }, // 缩放
                     { rotate: "30deg" } //rotateZ
                 ]
             }
@@ -215,6 +221,7 @@ const styles = StyleSheet.create({
     root: {
         width: "100%",
         height: "100%",
+        // 根据平台设置不同的背景色
         backgroundColor: Platform.select({
             android: "white",
             ios: "black",

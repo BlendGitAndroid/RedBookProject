@@ -55,6 +55,8 @@ export default forwardRef<CategoryModalRef, any>((props: Props, ref) => {
     })
 
     //使用useCallback，并结合高阶函数
+    //useCallback接受两个参数：回调函数和依赖数组。当依赖数组中的变量发生变化时，才会重新创建新的回调函数。
+    //如果依赖数组为空，则表示回调函数不依赖任何变量，将始终返回相同的函数引用。
     const onMyItemPress = useCallback((item: Category, index: number) => () => {
         if (!edit) {
             return

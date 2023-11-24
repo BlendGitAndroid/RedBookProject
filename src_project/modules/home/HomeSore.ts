@@ -10,6 +10,7 @@ export default class HomeStore {
 
     page: number = 1
 
+    // observable可观测对象
     @observable homeList: ArticleSimple[] = []
 
     @observable refreshing: boolean = false

@@ -34,7 +34,7 @@ import UserStore from '../../stores/UserStore';
 
 export default () => {
 
-    //设置可以输入的参数和默认值
+    //设置可以输入的参数和默认值，有两个值可选
     const [loginType, setLoginType] = useState<'quick' | 'input'>('quick');
     const [check, setCheck] = useState<boolean>(false);
     const [eyeOpen, setEyeOpen] = useState<boolean>(true);
@@ -55,6 +55,7 @@ export default () => {
                 ToastAndroid.show("登陆成功", ToastAndroid.SHORT)
                 navigation.replace('MainTab');
             } else {
+                console.log("登陆失败")
                 ToastAndroid.show("登陆失败，请检查用户名和密码", ToastAndroid.SHORT)
             }
         })
@@ -145,7 +146,7 @@ export default () => {
                     <Text style={allStyles.lableTxt}>我已阅读并同意</Text>
                     <TouchableOpacity
                         onPress={() => {
-                            Linking.openURL('https://www.baidu.com')
+                            Linking.openURL('https://www.baidu.com')    // 使用Linking打开外部链接
                         }}
                     >
                         <Text style={allStyles.protocolTxt}>《用户协议》和《隐私政策》</Text>
@@ -316,7 +317,7 @@ export default () => {
                 height: 28,
             },
         })
-        const canLogin = phone?.length === 13 && pwd?.length === 6;
+        const canLogin = phone?.length === 13 && pwd?.length === 6; //判断是否可以登陆
         return (
             <View style={styles.root}>
                 <Text style={styles.pwdLogin}>密码登陆</Text>

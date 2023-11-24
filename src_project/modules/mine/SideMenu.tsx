@@ -118,7 +118,7 @@ export default forwardRef((props: any, ref) => {
     }, []);
 
 
-    //使用marginLeft来控制显示与不显示
+    //使用marginLeft来控制显示与不显示，使用负值来展示出来
     const renderContent = () => {
         return (
             <View style={[styles.content, { marginLeft: open ? 0 : -ContentWidth }]}>

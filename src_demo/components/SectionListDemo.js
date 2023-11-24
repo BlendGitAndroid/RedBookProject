@@ -8,6 +8,7 @@ import {
     StatusBar
 } from 'react-native';
 
+// 解构出SectionData
 import { SectionData } from '../constants/Data';
 
 export default () => {
@@ -28,7 +29,7 @@ export default () => {
         <StatusBar
             barStyle={"light-content"}  //字体颜色
             backgroundColor={"#30303060"} //背景颜色
-            translucent={true}  //穿透状态栏，沉浸式状态栏
+            // translucent={true}  //穿透状态栏，沉浸式状态栏
             hidden={false}  //隐藏状态栏
         ></StatusBar>
         <SectionList

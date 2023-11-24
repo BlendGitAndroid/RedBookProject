@@ -61,7 +61,7 @@ export default () => {
             const bankList = accountList.filter(item => item.type === '银行卡') || [];
             const otherList = accountList.filter(item => item.type === '其它') || [];
 
-            //sectionList的布局要求
+            //sectionList的布局要求，必须是一个数组，数组里面是对象，对象里面有type和data两个属性
             const sectionData = [
                 { type: '游戏', data: gameList },
                 { type: '平台', data: platformList },
@@ -92,6 +92,7 @@ export default () => {
         );
     }
 
+    // 渲染每一项
     const renderItem = ({ item, index, section }) => {
         if (!sectionState[section.type]) {  //如果不显示数据，则不渲染
             return null;
@@ -100,6 +101,7 @@ export default () => {
             <TouchableOpacity
                 style={styles.itemLayout}
                 onPress={() => {
+                    // 传入item
                     addAccountRef.current.show(item);
                 }}
                 onLongPress={() => {
@@ -131,7 +133,7 @@ export default () => {
 
     const renderSectionHeader = ({ section }) => {
         return (
-            <View style={[
+            <View style={[  //这里使用数组，可以合并多个样式
                 styles.groupHeader,
                 {
                     borderBottomLeftRadius: (!section.data.length || !sectionState[section.type]) ? 12 : 0, //如果没有数据或者被关起来，就显示下方的圆角
@@ -143,7 +145,7 @@ export default () => {
                 <TouchableOpacity
                     style={styles.arrowButton}
                     onPress={() => {
-                        const copy = { ...sectionState };
+                        const copy = { ...sectionState };   //复制一份对象
                         copy[section.type] = !copy[section.type];
                         LayoutAnimation.easeInEaseOut();    //在值被改变之前调用布局动画
                         setSectionState(copy);
@@ -165,6 +167,7 @@ export default () => {
         <View style={styles.root}>
             {renderTitle()}
 
+            {/* SectionList来实现分组列表 */}
             <SectionList
                 sections={sectionData}
                 keyExtractor={(item, index) => `${item}-${index}`}
@@ -177,6 +180,7 @@ export default () => {
                 style={styles.addButton}
                 activeOpacity={0.5}
                 onPress={() => {
+                    // 什么都不传
                     addAccountRef.current.show();
                 }}
             >

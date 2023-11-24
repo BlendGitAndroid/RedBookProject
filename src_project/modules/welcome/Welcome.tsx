@@ -7,6 +7,7 @@ import icon_logo from "../../assets/icon_main_logo.png"
 import { load } from '../../utils/Storage';
 import UserStore from '../../stores/UserStore';
 
+// 这是启动页
 export default () => {
 
     const navigation = useNavigation<StackNavigationProp<any>>();
@@ -17,6 +18,7 @@ export default () => {
         }, 500)
     }, [])
 
+    // async表示该函数内部可能存在异步代码，await表示紧跟在后面的表达式需要等待结果
     const getUserInfo = async () => {
         const catchUserInfo = await load("userInfo")
         if (!catchUserInfo) {

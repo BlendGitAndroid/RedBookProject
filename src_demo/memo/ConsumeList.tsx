@@ -24,6 +24,7 @@ export default () => {
 
     //使用useMemo，当data数据没有改变的时候，就不重复计算，返回的是一个值，
     //并赋值给calculateTotal，而不是一个方法
+    //`useMemo` 接受两个参数：计算函数和依赖项数组。计算函数用于执行需要缓存的计算操作，并返回计算结果。
 
     //map() 方法创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成。
 
@@ -58,7 +59,7 @@ export default () => {
     // 防止onPress对象反复创建
     // 这里使用高阶函数定义
     const onItemPress = useCallback((item: any, index: number) => () => {
-
+        console.log(`点击了第${index}项，消费名称为：${item.name}`)
     }, [])
 
 

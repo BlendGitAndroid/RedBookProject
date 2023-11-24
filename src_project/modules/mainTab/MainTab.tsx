@@ -25,7 +25,8 @@ export default () => {
 
     const RedBookTabBar = ({ state, descriptors, navigation }: any) => {
         const { routes, index } = state;
-
+        
+        // 调用imagePicker库
         const onPublishPress = () => {
             launchImageLibrary(
                 {

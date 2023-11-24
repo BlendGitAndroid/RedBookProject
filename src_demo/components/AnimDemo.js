@@ -14,17 +14,18 @@ import icon_show from '../assets/images/icon_show.png';
 export default () => {
 
     //动画引用
-    const marginLeft = useRef(new Animated.Value(10)).current
+    const marginLeft = useRef<Animated.Value>(new Animated.Value(5)).current
 
-    const rotate = useRef(new Animated.Value(0)).current
+    const rotate = useRef<Animated.Value>(new Animated.Value(0)).current
 
-    const scale = useRef(new Animated.Value(1)).current
+    const scale = useRef<Animated.Value>(new Animated.Value(1)).current
 
-    const opacity = useRef(new Animated.Value(1)).current
+    const opacity = useRef<Animated.Value>(new Animated.Value(1)).current
 
     //矢量动画, 将一维变成二维
     // const vector = useRef(new Animated.ValueXY({ x: 10, y: 10 })).current
 
+    // 过 `rotate.interpolate` 方法对 `rotate` 进行插值。`rotate` 是一个 `Animated.Value` 对象，用于控制旋转动画的值
     const rotateValue = rotate.interpolate({
         inputRange: [0, 30],
         outputRange: ["0deg", "30deg"]
@@ -33,6 +34,7 @@ export default () => {
     const [showRight, setShowRight] = useState(false)
     const [showView, setShowView] = useState(false)
 
+    // 三个按钮的动画
     const showWidth0 = useRef(new Animated.Value(200)).current
     const showWidth1 = useRef(new Animated.Value(64)).current
     const showWidth2 = useRef(new Animated.Value(64)).current
@@ -74,10 +76,11 @@ export default () => {
     return <View style={styles.root}>
         <Button
             onPress={() => {
+                // 用于创建基于时间的动画效果的一个函数
                 Animated.timing(marginLeft, {
                     toValue: 200,
                     duration: 1000,
-                    useNativeDriver: false
+                    useNativeDriver: false  // 使用原生动画驱动
                 }).start()  //开始动画
             }}
             color={"green"}
@@ -252,6 +255,7 @@ export default () => {
             // { marginLeft: vector.x, marginTop: vector.y }
         ]}></Animated.View>
 
+        {/* 使用LayoutAnimation用法 */}
         <View style={styles.layoutRoot}>
 
             <Button
@@ -265,7 +269,7 @@ export default () => {
                     //     }
                     // )
 
-                    //下面的是简单的写法
+                    //下面的是简单的写法,写在onPress下面
                     LayoutAnimation.spring()
                     setShowView(!showView)
                 }}
@@ -276,7 +280,7 @@ export default () => {
 
             <TouchableOpacity style={styles.reverseBtn}
                 onPress={() => {
-                    //简单写法
+                    //简单写法，就是组合动画的方式,写在onPress下面
                     LayoutAnimation.linear()
                     setShowRight(!showRight)
                 }}
@@ -308,6 +312,7 @@ export default () => {
                 }}
                 activeOpacity={0.5}
             >
+                {/* 使用Animated.View包裹 */}
                 <Animated.View style={[
                     styles.showView,
                     { width: showWidth0 },
@@ -326,10 +331,11 @@ export default () => {
                 }}
                 activeOpacity={0.5}
             >
+                {/* 谁需要动画，就给谁加上Animated.View */}
                 <Animated.View style={[
                     styles.showView,
-                    { width: showWidth1 },
-                    { opacity: showIndex == 1 ? 1 : 0.75 }
+                    { width: showWidth1 },  // 设置宽度
+                    { opacity: showIndex == 1 ? 1 : 0.75 }  // 设置透明度
                 ]}>
                     <Image style={styles.showImg} source={icon_show}></Image>
                     <Text style={styles.showTxt}>热门直播</Text>
@@ -371,8 +377,6 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: "blue",
-        marginTop: 60,
-        marginLeft: 60,
     },
     layoutAnimate: {
         width: "100%",
@@ -420,7 +424,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderTopRightRadius: 30,
         borderBottomRightRadius: 30,
-        overflow: "hidden"  //隐藏之外的东西
+        overflow: "hidden"  //隐藏之外的东西，这里就是那个圆
     },
     showImg: {
         width: 20,
@@ -433,6 +437,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginLeft: 38
     },
+    // 圆点
     showDot: {
         width: 10,
         height: 10,

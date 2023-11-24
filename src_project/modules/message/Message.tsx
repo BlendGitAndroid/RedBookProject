@@ -40,7 +40,7 @@ export default observer(() => {
                 <TouchableOpacity
                     style={styles.groupButton}
                     onPress={(event: GestureResponderEvent) => {
-                        const { pageY } = event.nativeEvent;
+                        const { pageY } = event.nativeEvent;    // 获取点击的位置的Y坐标
                         ref.current?.show(pageY + (StatusBar.currentHeight || 48));
                     }}
                 >
@@ -81,7 +81,7 @@ export default observer(() => {
                 marginTop: 4,
             },
             rightLayout: {
-                alignItems: 'flex-end', //从右向左排列
+                alignItems: 'flex-end', //从右向左排列，这样会使得置顶图标在右边
             },
             timeTxt: {
                 fontSize: 12,
@@ -110,7 +110,10 @@ export default observer(() => {
     }
 
     //自定义小组件
-    const UnRead = ({ count }: { count: number }) => {
+    //`{ count }: { count: number }` 是一种解构赋值的写法。
+    //`{ count }`表示从一个对象中提取名为`count`的属性, 个变量的类型是`number`。
+    //{ count: number,test: boolean }表示一个对象，对象中有两个属性，一个是count，一个是test，count的类型是number，test的类型是boolean
+    const UnRead = ({ count ,test}: { count: number,test: boolean }) => {
         const styles = StyleSheet.create({
             txt: {
                 position: 'absolute',
@@ -159,21 +162,21 @@ export default observer(() => {
                 <View style={styles.headerItem}>
                     <View>
                         <Image style={styles.itemImg} source={icon_star} />
-                        {!!unread?.unreadFavorate && <UnRead count={unread?.unreadFavorate} />}
+                        {!!unread?.unreadFavorate && <UnRead count={unread?.unreadFavorate} test={true}/>}
                     </View>
                     <Text style={styles.itemTxt}>赞和收藏</Text>
                 </View>
                 <View style={styles.headerItem}>
                     <View>
                         <Image style={styles.itemImg} source={icon_new_follow} />
-                        {!!unread?.newFollow && <UnRead count={unread?.newFollow} />}
+                        {!!unread?.newFollow && <UnRead count={unread?.newFollow} test={false} />}
                     </View>
                     <Text style={styles.itemTxt}>新增关注</Text>
                 </View>
                 <View style={styles.headerItem}>
                     <View>
                         <Image style={styles.itemImg} source={icon_comments} />
-                        {!!unread?.comment && <UnRead count={unread?.comment} />}
+                        {!!unread?.comment && <UnRead count={unread?.comment} test={true} />}
                     </View>
                     <Text style={styles.itemTxt}>评论和@</Text>
                 </View>

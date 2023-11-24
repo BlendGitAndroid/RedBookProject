@@ -66,7 +66,7 @@ export default forwardRef((props: any, ref) => {
             animationType='fade'
             onRequestClose={hide}
         >
-            {/* 将Modal里面的全部包裹住，点击空白就能隐藏了 */}
+            {/* 将Modal里面的全部包裹住，点击空白就能隐藏了，巧妙 */}
             <TouchableOpacity style={styles.root} onPress={hide}>
                 {renderMenus()}
             </TouchableOpacity>

@@ -7,6 +7,7 @@ import {
     Text,
 } from 'react-native';
 
+// 定义Props类型
 type Props = {
     info: UserInfo
 }
@@ -14,6 +15,7 @@ type Props = {
 //函数式组件避免重复渲染使用memo
 export default React.memo((props: Props) => {
 
+    // 解构赋值
     const { info } = props
 
     // props每设置一次，都会发生渲染，不管props有没有改变

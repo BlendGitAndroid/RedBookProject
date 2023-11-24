@@ -35,7 +35,7 @@ export default class ShopStore {
                 if (this.page === 1) {
                     this.goodsList = data;
                 } else {
-                    this.goodsList = [...this.goodsList, ...data];
+                    this.goodsList = [...this.goodsList, ...data];  //拼接数组，创建新的数组对象
                 }
                 this.page = this.page + 1;
             } else {

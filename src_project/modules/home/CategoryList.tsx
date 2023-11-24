@@ -17,6 +17,7 @@ export default ({ categoryList, allCategoryList, onCategoryChange }: Props) => {
     const [category, setCategory] = useState<Category>();
 
     useEffect(() => {
+        console.log('categoryList', categoryList);
         setCategory(categoryList.find(i => i.name === '推荐')) //初始化，find找到符合条件的值
     }, [categoryList])
 
@@ -97,6 +98,6 @@ const styles = StyleSheet.create({
     openImg: {
         width: 18,
         height: 18,
-        transform: [{ rotate: "-90deg" }]
+        transform: [{ rotate: "-90deg" }]   //旋转90度
     }
 })

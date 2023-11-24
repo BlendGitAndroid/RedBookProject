@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import { StyleSheet, ScrollView, View, Text, TextInput, Button, Dimensions } from "react-native";
 
+// 获取屏幕宽度
 const { width } = Dimensions.get('window');
 
 export default () => {
 
-    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
 
     const returnArrayView = (arrayView) => {
         return arrayView.map((item, index) => {
@@ -24,11 +25,11 @@ export default () => {
         onScroll={(event) => {  //监听滚动距离
             console.log(event.nativeEvent.contentOffset.y)
         }}
-        horizontal={true}
-        pagingEnabled={true}
+        // horizontal={true}   // 水平滚动
+        pagingEnabled={true}    // 当值为 true 时，滚动条会停在滚动视图的尺寸的整数倍位置
         scrollEnabled={true} //可以滚动
         // contentOffset={{ y: 100 }}
-        stickyHeaderIndices={[1]}
+        stickyHeaderIndices={[1]}   // 一个子视图下标的数组，用于决定哪些成员会在滚动之后固定在屏幕顶端，不能和horizontal={true}一起使用。
     >
         <View style={styles.pageView}>
             <TextInput style={styles.textInput}></TextInput>
@@ -38,10 +39,10 @@ export default () => {
             }}></Button>
             {returnArrayView(array)}
             {/* {
-            array.map((item, index) => {
-                return <Text key={`${index}`} style={styles.txt}>{item}</Text>
-            })
-        } */}
+                array.map((item, index) => {
+                    return <Text key={`${index}`} style={styles.txt}>{item}</Text>
+                })
+            } */}
         </View>
         <View style={styles.pageView2}></View>
         <View style={styles.pageView3}></View>

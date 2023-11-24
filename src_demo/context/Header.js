@@ -8,27 +8,35 @@ import {
 } from 'react-native';
 
 import icon_avatar from '../assets/images/default_avatar.png';
+
+// 解构出ThemeContext
 import { ThemeContext } from './ThemeContext';
+
+// 引入高阶组件
 import withFloatButton from './withFloatButton';
 
-export default withFloatButton(() => {
+export default withFloatButton((props) => {
+
+    const { name } = props
 
     //使用Context
     const theme = useContext(ThemeContext)
 
     const styles = theme == "dark" ? darkStyles : lightStyles
+
+    // 这里的返回,最好用()包裹起来
     return (
         <View style={styles.content}>
             <Image style={styles.img} source={icon_avatar} />
             <Text style={styles.txt}>个人信息介绍</Text>
             <View style={styles.infoLayout}>
                 <Text style={styles.infoTxt}>
-                    各位产品经理大家好，我是个人开发者张三，我学习RN两年半了，我喜欢安卓、RN、Flutter。
+                    {name}
                 </Text>
             </View>
         </View>
     );
-})
+});
 
 const darkStyles = StyleSheet.create({
     content: {

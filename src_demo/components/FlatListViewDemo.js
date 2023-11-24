@@ -18,11 +18,11 @@ export default () => {
     }
 
     //为了不写return，这里直接使用（）简单写法
-    const ListFooter = (
+    const ListFooter = 
         <View style={[styles.header, styles.footer]}>
             <Text style={[styles.txt, styles.txtCenter]}>尾部</Text>
         </View>
-    )
+    
 
     const ListEmpty = (
         <View style={styles.listEmpty}>
@@ -40,7 +40,7 @@ export default () => {
             ListHeaderComponent={ListHeader}    //列表头尾
             ListFooterComponent={ListFooter}
             ListEmptyComponent={ListEmpty}
-            ItemSeparatorComponent={
+            ItemSeparatorComponent={    // 分割线
                 <View style={styles.separator}></View>
             }
             initialNumToRender={14} //控制渲染的数量

@@ -13,6 +13,7 @@ export default (props) => {
                 {`姓名：${name}`}
             </Text>
             {levelView}
+            {/* 显示子组件 */}
             {props.children}
         </View>
     )

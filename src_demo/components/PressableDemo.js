@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, Pressable, View } from "react-native";
 
-// Pressable，定制按下和抬起的样式
+// Pressable，定制按下和抬起的样式，从state参数中获取
 export default () => {
     return <View style={styles.root}>
         <Pressable

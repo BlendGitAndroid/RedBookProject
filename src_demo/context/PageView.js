@@ -9,7 +9,7 @@ export default () => {
 
     return (
         <View>
-            <Header />
+            <Header name="这里是自我介绍"></Header>
         </View>
     );
 }

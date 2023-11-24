@@ -122,10 +122,10 @@ export default observer(() => {
             container: {
                 width: '100%',
                 flexDirection: 'row',
-                flexWrap: 'wrap',
+                flexWrap: 'wrap',   // 换行
             },
             categoryItem: {
-                width: '20%',   //这里使用20%来分割出5个item
+                width: '20%',   //这里使用20%来分割出5个item，5%号好用
                 alignItems: 'center',
                 paddingVertical: 16,
             },

@@ -46,6 +46,7 @@ export default () => {
 
             }}
         />
+        {/* tintColor: 图片的颜色 */}
         <Image style={styles.imgTintColor} source={icon_seetting} />
     </View>
 }

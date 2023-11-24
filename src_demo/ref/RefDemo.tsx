@@ -8,6 +8,7 @@ export default () => {
 
     const inputRef = useRef<TextInput>(null)
 
+    // 自定义组件对外暴露API
     const apiRef = useRef<RefApi>(null)
 
     const apiClassRef = useRef<RefApiClassTextInput>(null)
@@ -31,7 +32,7 @@ export default () => {
             color={"blue"}
             title="自定义组件对外暴露API"
         />
-        {/* ref指向RefApiTextInput本身 */}
+        {/* ref指向RefApi对象 */}
         <RefApiTextInput ref={apiRef} />
 
         <View style={{ width: "100%", height: 20, marginTop: 20 }}></View>
@@ -42,7 +43,7 @@ export default () => {
             color={"orange"}
             title="自定义函数对外暴露API"
         />
-        {/* ref指向RefApiClassTextInput本身 */}
+        {/* ref指向RefApiClassTextInput本身, 与函数组件不同 */}
         <RefApiClassTextInput ref={apiClassRef} />
 
     </View>

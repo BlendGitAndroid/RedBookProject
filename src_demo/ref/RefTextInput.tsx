@@ -14,7 +14,7 @@ import icon_right from '../assets/images/icon_right.png';
 import icon_question from '../assets/images/icon_question.webp';
 import icon_delete from '../assets/images/icon_delete.png';
 
-//定义泛型，ref的类型是TextInput
+//定义泛型，ref的类型是TextInput，props的类型是any
 export default forwardRef<TextInput, any>((props, ref) => {
 
     const [value, setValue] = useState<string>('');
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     },
     inputWrap: {
         width: '100%',
-        borderWidth: 2,
-        borderRadius: 12,
+        borderWidth: 2, //设置边框的宽度
+        borderRadius: 12,   //设置圆角
         flexDirection: 'row',
         alignItems: 'center',
     },

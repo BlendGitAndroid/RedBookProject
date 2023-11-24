@@ -6,6 +6,7 @@ import { avatarUri } from '../constants/Uri';
 import InfoViewClass from './InfoViewClass';
 import ConsumeList from './ConsumeList';
 
+// 函数式组件/类组件/方法/UI 避免重建
 export default () => {
 
     const [info, setInfo] = useState<UserInfo>({
@@ -24,8 +25,11 @@ export default () => {
                 })
             }}
         />
+
+        {/* 函数式组件避免重复渲染使用memo */}
         {/* <InfoView info={info}></InfoView> */}
 
+        {/* 类组件避免重复渲染使用shouldComponentUpdate */}
         {/* <InfoViewClass info={info}></InfoViewClass> */}
 
         <ConsumeList></ConsumeList>

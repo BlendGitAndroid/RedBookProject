@@ -46,6 +46,7 @@ export default () => {
             },
         })
 
+        // 定义一个数组
         const array = []
         array[0] = (
             <>
@@ -104,7 +105,7 @@ export default () => {
                 fontWeight: 'bold',
             },
             close: {
-                position: "absolute",
+                position: "absolute",   //绝对定位
                 right: 10
             },
             closeIcon: {
@@ -180,6 +181,7 @@ export default () => {
 
     return <View style={styles.root}>
 
+        {/* 状态栏 */}
         <StatusBar
             barStyle={"light-content"}  //字体颜色
             backgroundColor={"transparent"} //背景颜色
@@ -198,7 +200,7 @@ export default () => {
                     <Image style={styles.avatarAdd} source={icon_add}></Image>
                 </View>
                 <View style={styles.nameView}>
-                    <Text style={styles.name}>{`大公爵`}</Text>
+                    <Text style={styles.name}>大公爵</Text>
                     <View style={styles.idDirection}>
                         <Text style={styles.id}>小红书号：118302851</Text>
                         <Image style={styles.code} source={icon_code}></Image>
@@ -278,6 +280,7 @@ export default () => {
             {getContent()[tabIndex]}
         </View>
 
+        {/* 弹框功能 */}
         {renderModal()}
     </View>
 
@@ -298,7 +301,7 @@ const styles = StyleSheet.create({
     },
     topAction: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-between",    //在容器的主轴上均匀分布子元素，将剩余空间平均分配给子元素之间。
         paddingHorizontal: 10
     },
     actionView: {
@@ -321,12 +324,12 @@ const styles = StyleSheet.create({
     avatarView: {
         width: 60,
         height: 60,
-        borderRadius: 30,
+        borderRadius: 30,   // 圆形，角度是宽高的一半
     },
     avatarAdd: {
         width: 20,
         height: 20,
-        position: "absolute",
+        position: "absolute",   //绝对定位
         right: 0,
         bottom: 0
     },
@@ -362,7 +365,7 @@ const styles = StyleSheet.create({
     maleView: {
         width: 30,
         height: 20,
-        borderRadius: 15,
+        borderRadius: 15,   //设置圆角
         marginLeft: 10,
         marginTop: 10,
         backgroundColor: "#737388",
@@ -418,7 +421,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         backgroundColor: "white",
-        marginTop: -12,
+        marginTop: -12, //负数，向上移动
         flexDirection: "row",
         justifyContent: "center"
     },

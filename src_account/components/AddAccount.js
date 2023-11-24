@@ -17,10 +17,11 @@ import icon_close_modal from '../assets/icon_close_modal.png';
 
 export default forwardRef((props, ref) => {
 
+    // 传入onSave方法
     const { onSave } = props;
 
+    
     const [visible, setVisible] = useState(false);
-
     const [isModify, setIdModify] = useState(false);
 
     const [id, setId] = useState('');
@@ -58,16 +59,18 @@ export default forwardRef((props, ref) => {
         setVisible(false);
     }
 
+    // 通过useImperativeHandle暴露给父组件的方法
     useImperativeHandle(ref, () => {
         return {
-            show,
+            show,// 简单的写法，如果key和value一样，可以直接写一个
             hide,
         }
     });
 
     const onSavePress = () => {
-        const newAccount = { id, type, name, account, password };
+        const newAccount = { id, type, name, account, password };   // 创建一个对象，key和value一样，可以直接写一个
         load('accountList').then(data => {
+            // 将字符串转换成数组
             let accountList = data ? JSON.parse(data) : [];
 
             // 如果是编辑现有账号，则push前先移除原来的
@@ -76,6 +79,7 @@ export default forwardRef((props, ref) => {
             }
 
             accountList.push(newAccount);
+            // 将数组转换成字符串，存储到本地
             save('accountList', JSON.stringify(accountList)).then(() => {
                 onSave();
                 hide();
@@ -168,7 +172,7 @@ export default forwardRef((props, ref) => {
                             style={[
                                 styles.tab,
                                 index === 0
-                                    ? styles.leftTab
+                                    ? styles.leftTab    //判断是否是第一个模块，如果是，就加上左边圆角
                                     : index === 3
                                         ? styles.rightTab
                                         : {},
@@ -294,6 +298,7 @@ export default forwardRef((props, ref) => {
         );
     }
 
+    // 使用Modal组件来实现弹窗
     return (
         <Modal
             visible={visible}

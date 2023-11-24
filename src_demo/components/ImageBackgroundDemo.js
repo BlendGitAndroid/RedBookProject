@@ -6,6 +6,7 @@ import icon_bank from "../assets/images/icon_bank.png"
 
 export default () => {
     return <View style={styles.root}>
+        {/* 定义背景色，需要定义子元素和图片的style */}
         <ImageBackground style={styles.viewStyle} imageStyle={styles.imgStyle}
             source={bg_card}
         >
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     viewStyle: {
         width: "100%",
         flexDirection: "row",
-        alignItems: "flex-start"
+        alignItems: "flex-start"    // 将容器的子元素对齐到容器次轴的起始位置。
     },
     imgStyle: {
         resizeMode: 'cover',

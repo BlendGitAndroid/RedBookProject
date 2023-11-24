@@ -14,30 +14,35 @@ import icon_right from '../assets/images/icon_right.png';
 import icon_question from '../assets/images/icon_question.webp';
 import icon_delete from '../assets/images/icon_delete.png';
 
+// 定义接口方法,这里是方法的定义
 export interface RefApi {
     focus: () => void,
     blur: () => void
 }
 
 //定义泛型，ref的类型是TextInput
-export default forwardRef((props, ref) => {
+export default forwardRef<RefApi, any>((props, ref) => {
 
     const [value, setValue] = useState<string>('');
 
+    // 内部定义的ref
     const textInput = useRef<TextInput>(null)
 
-    const focus = () => {
+    const myFocus = () => {
         textInput.current?.focus()
     }
 
-    const blur = () => {
+    const myBlur = () => {
 
     }
 
+    // `useImperativeHandle` 是 React 的一个 Hook，用于自定义暴露给父组件的实例值或方法。
+    // 它可以让你在函数组件中通过使用 `ref`，控制要暴露给父组件的实例。
+    // 那这里方法的实现
     useImperativeHandle(ref, () => {
         return {
-            focus: focus,
-            blur: blur,
+            focus: myFocus,
+            blur: myBlur
         }
     })
 

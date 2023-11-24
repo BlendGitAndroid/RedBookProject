@@ -8,7 +8,7 @@ export default () => {
             onPress={() => { }}
             color={"green"}
             title="按钮"
-            disabled={false} //变灰色
+            disabled={false} //能否点击，变灰色
         >
         </Button>
     </View>

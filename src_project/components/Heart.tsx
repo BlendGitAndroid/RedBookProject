@@ -16,6 +16,7 @@ export default (props: Props) => {
 
     const [showState, setShowState] = useState<boolean>(false)
 
+    // 设置动画属性
     const scale = useRef<Animated.Value>(new Animated.Value(0)).current
     const alpha = useRef<Animated.Value>(new Animated.Value(0)).current
 
@@ -58,14 +59,14 @@ export default (props: Props) => {
             source={showState ? icon_heart : icon_heart_empty}
         />
 
-        {/* 制作动画 */}
+        {/* 制作动画，使用Animated.View来表示 */}
         <Animated.View style={{
             width: size,
             height: size,
-            borderRadius: size / 2,
+            borderRadius: size / 2, // 这里设置为宽高的一半，就是圆形
             borderWidth: size / 20, //边框宽度
             borderColor: "#ff2442",
-            position: "absolute",   //不占用标准流
+            position: "absolute",   //不占用标准流，可以覆盖在其他元素上面
             transform: [
                 { scale: scale }
             ],

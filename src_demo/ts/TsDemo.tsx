@@ -9,6 +9,7 @@ export default () => {
     }
 
     //onButtonPress是一个函数，他是一个无参，并且没有返回值的函数
+    // 非常像kotlin的函数类型
     const onButtonPress: () => void = () => {
 
         const num1: number = 12
@@ -36,12 +37,14 @@ export default () => {
         const t1: [string, number, boolean] = ["Blend", 12, true]
         console.log(t1)
 
+        //枚举
         enum Job {
             Teacher,
             Programmer,
             Cook
         }
         console.log(Job.Programmer) //是1
+        console.log(Job.Cook.valueOf())
 
         enum City {
             NanJing = "南京",

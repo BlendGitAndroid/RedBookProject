@@ -6,7 +6,7 @@ export default () => {
     const [count, setCount] = useState(0)
 
     /**
-     * 闭包是一个从外部作用域捕获变量的函数。
+     * 闭包是一个函数，他能从外部作用域捕获变量的函数。
      * 闭包（例如事件处理程序，回调）可能会从函数组件作用域中捕获状态变量。 由于状态变量在渲染之间变化，因此闭包应捕获具有最新状态值的变量。
      * 否则，如果闭包捕获了过时的状态值，则可能会遇到过时的状态问题。
      * 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         height: "100%",
         backgroundColor: "#353535",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: "center",   // 将容器的子元素居中对齐于容器次轴上
     },
     titleText: {
         fontSize: 36,

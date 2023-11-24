@@ -64,7 +64,7 @@ export default observer(() => {
         const firstImg = store.detail?.images[0];
         Image.getSize(firstImg, (width: number, height: number) => {
             const showHeight = SCREEN_WIDTH * height / width;
-            setHeight(showHeight);
+            setHeight(showHeight);  // 根据宽高比算出图片的高度
         })
     }, [store.detail?.images]);
 
@@ -94,7 +94,7 @@ export default observer(() => {
             return null;
         }
         const data: any[] = images.map(i => {
-            return { img: i };
+            return { img: i };  // 将images数组转为对象数组
         })
         return (
             <View style={{ paddingBottom: 30 }} >
@@ -114,7 +114,7 @@ export default observer(() => {
     const renderInfo = () => {
         const { detail } = store;
         // join：将array数据中每个元素都转为字符串,用自定义的连接符分割
-        const tags = detail.tag?.map(i => `# ${i}`).join(' ');  //这里是为每一个标签前加#
+        const tags = detail.tag?.map(i => `# ${i}`).join(' ');  //这里是为每一个标签前加#，然后用空格分割
         return (
             <>
                 <Text style={styles.articleTitleTxt}>{detail.title}</Text>
