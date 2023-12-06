@@ -27,6 +27,7 @@ function App(): JSX.Element {
 
       {/* 容器组件，放在最外层包裹住整个 App 的 JSX 元素 */}
       <NavigationContainer>
+        {/* 收集页面用的是 Stack.Navigator 组件 */}
         <Stack.Navigator
           initialRouteName=''
           screenOptions={{

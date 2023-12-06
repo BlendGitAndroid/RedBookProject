@@ -40,6 +40,7 @@ import ContextView from './src_demo/context/ContextView';
 import MemoDemo from './src_demo/memo/MemoDemo';
 import RefDemo from './src_demo/ref/RefDemo';
 import NativePage from './src_demo/native/NativePage';
+import MonitorExample from './src_demo/utils/MonitorExample';
 
 
 function App(): JSX.Element {
@@ -87,12 +88,14 @@ function App(): JSX.Element {
         {/* <AnimDemo/> */}
         {/* <AnimShow/> */}
 
-        <TsDemo/>
+        {/* <TsDemo/> */}
         {/* <ContextView /> */}
         {/* <MemoDemo /> */}
         {/* <RefDemo /> */}
 
         {/* <NativePage /> */}
+
+        <MonitorExample />
       </View>
     </SafeAreaView>
   );
