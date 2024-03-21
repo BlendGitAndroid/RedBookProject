@@ -14,6 +14,10 @@ import icon_right from '../assets/images/icon_right.png';
 import icon_question from '../assets/images/icon_question.webp';
 import icon_delete from '../assets/images/icon_delete.png';
 
+// 这段代码定义了一个 TypeScript 接口。在 TypeScript 中，接口是一种强大的方式来定义契约，用于描述对象的形状，或者类的公共部分。
+// 在这个 [`RefApi`]接口中，定义了两个方法：[`focus`] 和 [`blur`]。
+// 这个 [`RefApi`] 接口可能被用于定义一个 React 组件的 ref 对象的 API。在 React 中，ref 对象通常用于存储对一个 DOM 元素的引用，
+// 以便可以在组件外部直接操作这个元素。在这个例子中，[`RefApi`] 接口定义了两个常见的 DOM 操作：聚焦（[`focus`]）和失焦（[`blur`]）。
 // 定义接口方法,这里是方法的定义
 export interface RefApi {
     focus: () => void,
@@ -39,6 +43,11 @@ export default forwardRef<RefApi, any>((props, ref) => {
     // `useImperativeHandle` 是 React 的一个 Hook，用于自定义暴露给父组件的实例值或方法。
     // 它可以让你在函数组件中通过使用 `ref`，控制要暴露给父组件的实例。
     // 那这里方法的实现
+    // 在这个例子中，useImperativeHandle 钩子接收两个参数：ref 和一个函数。ref 是一个由父组
+    // 件传递的 ref 对象，这个函数返回一个对象，这个对象的属性会被添加到 ref 对象上。
+    // 这个函数返回了一个对象，这个对象有两个方法：focus 和 blur。这两个方法分别对应 myFocus 和 myBlur，这两个
+    // 应该是在组件内部定义的函数，用于处理聚焦和失焦的操作。
+    // 通过这种方式，你可以在父组件中通过 ref 直接调用 focus 和 blur 方法，就像这样：
     useImperativeHandle(ref, () => {
         return {
             focus: myFocus,

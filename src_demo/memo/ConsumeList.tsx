@@ -56,6 +56,11 @@ export default () => {
         data.map((item: any) => item.amount)
             .reduce((pre: number, cur: number) => pre + cur)
 
+    // 在 React 中，使用 useCallback 钩子来定义回调函数可以帮助我们优化性能。
+    // 在函数组件中，每次组件重新渲染时，所有的函数都会被重新创建。这可能会导致一些不必要的性能开销，特别是当这些函数被作为 props 传
+    // 递给子组件时。因为子组件的 props 改变了，子组件也会重新渲染，即使实际上这些函数的行为并没有改变。
+    // useCallback 钩子可以返回一个记忆化的版本的回调函数，它只在依赖项改变时才会更新。这意味着，只要依赖项没有改变，每次组件重新渲染时，
+    // useCallback 都会返回同一个回调函数。这样，即使组件重新渲染，回调函数也不会改变，也就不会触发子组件的不必要的重新渲染。
     // 防止onPress对象反复创建
     // 这里使用高阶函数定义
     const onItemPress = useCallback((item: any, index: number) => () => {

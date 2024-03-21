@@ -115,14 +115,60 @@ export default observer(() => {
         store.requestHomeList()
     }
 
+    // (item: ArticleSimple) => () => {} 这种写法创建了一个返回函数的函数，也被称为高阶函数。
+    // onPress的定义：onPress?: ((event: GestureResponderEvent) => void) | undefined;，明确说明需要的是一个函数。
     const onArticlePress = useCallback((item: ArticleSimple) => () => {
         navigation.push("ArticleDetail", { id: item.id })   //通过这种方式传值
     }, [])
 
-    const renderItem = ({ item }: { item: ArticleSimple }) => {
+    // 错误写法一：
+    // 下面这样写是不对的，因为这个错误可能是因为 `onPress` 需要的是一个函数，但是你传递给它的是 `onArticlePress(item)` 的返回值。
+    // 如果 `onArticlePress(item)` 的返回值不是一个函数，就会出现这个错误。
+    // 正确的写法就是代码里的这个，返回的是一个函数，也就是一个闭包。
+    // const onArticlePress = useCallback((item: ArticleSimple) => (item: ArticleSimple) => {
+    //     navigation.push("ArticleDetail", { id: item.id })   //通过这种方式传值
+    // }, [])
+
+    // 错误写法二：
+    //     这两个 `useCallback` 的主要区别在于它们返回的函数类型和如何使用它们。
+
+    // 1. `useCallback((item: ArticleSimple) => () => { navigation.push("ArticleDetail", { id: item.id }) }, [])` 这个 `useCallback` 返回
+    // 一个函数，这个函数接收一个 `ArticleSimple` 类型的参数 `item`，然后返回一个新的函数。这个新的函数在被调用时，会执
+    // 行 `navigation.push("ArticleDetail", { id: item.id })`。因此，你需要这样使用它：
+    // ```typescriptreact
+    // const onArticlePress = useCallback((item: ArticleSimple) => () => {
+    //     navigation.push("ArticleDetail", { id: item.id })
+    // }, [])
+
+    // 使用
+    // onArticlePress(item)()
+    // ```
+
+    // 2. `useCallback((item: ArticleSimple) => { navigation.push("ArticleDetail", { id: item.id }) }, [])` 这个 `useCallback` 返回
+    // 一个函数，这个函数接收一个 `ArticleSimple` 类型的参数 `item`，然后直接执行 `navigation.push("ArticleDetail", { id: item.id })`。
+    // 因此，你需要这样使用它：
+
+    // ```typescriptreact
+    // const onArticlePress = useCallback((item: ArticleSimple) => {
+    //     navigation.push("ArticleDetail", { id: item.id })
+    // }, [])
+
+    // // 使用
+    // onArticlePress(item)
+    // ```
+
+    // 总的来说，第一种形式返回的是一个返回函数的函数（也被称为高阶函数），而第二种形式返回的是一个直接执行操作的函数。你应该根据你的具体需求来选择使用哪一种。
+
+    // 这个是renderItem下面的全部写法
+    // const renderItem = (itemInfo) => {
+    //     const { item, index } = itemInfo    //解构出item和index
+    //     return <Text style={styles.txt}>{`List ${item}`}</Text>
+    // }
+
+    const renderItem = ({ item }: { item: ArticleSimple, index: number }) => {
         return <TouchableOpacity
             onPress={
-                onArticlePress(item)
+                onArticlePress(item)    // onPress的定义：onPress?: ((event: GestureResponderEvent) => void) | undefined;，明确说明需要的是一个函数。
             }
             style={styles.item}>
             <ResizeImage uri={item.avatarUrl} />

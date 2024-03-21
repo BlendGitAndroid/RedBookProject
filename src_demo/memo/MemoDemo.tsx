@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, View } from "react-native"
 import InfoView from "./InfoView"
 
-import { avatarUri } from '../constants/Uri';
+import { avatarUri, imageUri } from '../constants/Uri';
 import InfoViewClass from './InfoViewClass';
 import ConsumeList from './ConsumeList';
 
@@ -10,7 +10,7 @@ import ConsumeList from './ConsumeList';
 export default () => {
 
     const [info, setInfo] = useState<UserInfo>({
-        avatar: " ",
+        avatar: imageUri,
         name: " ",
         desc: " "
     })

@@ -14,18 +14,30 @@ import icon_show from '../assets/images/icon_show.png';
 export default () => {
 
     //动画引用
-    const marginLeft = useRef<Animated.Value>(new Animated.Value(5)).current
+    // useRef 是 React 的一个钩子（Hook），它返回一个可变的 ref 对象，其 .current 属性被初始化为传递的参数。在这个例子中，传递的参数是一个
+    // 新的 Animated.Value 实例，初始值为 5。
+    const marginLeft = useRef(new Animated.Value(5)).current
 
-    const rotate = useRef<Animated.Value>(new Animated.Value(0)).current
+    // 在你的原始代码中，你使用了 `useRef<Animated.Value>(new Animated.Value(0)).current`，这是 TypeScript 的语法，用于指定 `useRef` 钩子的类型。
+    // 然而，如果你的项目是一个 JavaScript 项目，而不是 TypeScript 项目，那么这个语法就会导致错误。
+    // 当你将代码改为 `useRef(new Animated.Value(0)).current`，你移除了 TypeScript 的类型注解，所以这段代码现在可以在 JavaScript 项目中运行。
+    // `useRef` 钩子返回一个可变的 ref 对象，其 `.current` 属性被初始化为传递的参数（在这种情况下是一个新的 `Animated.Value` 实例）。
+    // 你使用 `.current` 属性来获取 `Animated.Value` 实例，这样你就可以在其他地方使用它，例如在 `interpolate` 方法中。
+    // 总的来说，你遇到的问题是由于试图在 JavaScript 项目中使用 TypeScript 语法导致的。移除类型注解后，你的代码就可以正常工作了。
 
-    const scale = useRef<Animated.Value>(new Animated.Value(1)).current
+    // const rotate = useRef<Animated.Value>(new Animated.Value(0)).current  // TypeScript 语法，在JS中是错误的
+    const rotate = useRef(new Animated.Value(0)).current
 
-    const opacity = useRef<Animated.Value>(new Animated.Value(1)).current
+    const scale = useRef(new Animated.Value(1)).current
+
+    const opacity = useRef(new Animated.Value(1)).current
 
     //矢量动画, 将一维变成二维
     // const vector = useRef(new Animated.ValueXY({ x: 10, y: 10 })).current
 
-    // 过 `rotate.interpolate` 方法对 `rotate` 进行插值。`rotate` 是一个 `Animated.Value` 对象，用于控制旋转动画的值
+    // 通过 `rotate.interpolate` 方法对 `rotate` 进行插值。`rotate` 是一个 `Animated.Value` 对象，用于控制旋转动画的值
+    // 可以使用 rotate.interpolate() 来创建一个新的 Animated.Value 对象，这个新对象的值根据 rotate 的值在一个特定的输入范围和输出范围之间插值。
+    // 这种映射关系在创建复杂的动画效果时非常有用，因为你可以根据一个变量的变化来控制另一个变量的变化
     const rotateValue = rotate.interpolate({
         inputRange: [0, 30],
         outputRange: ["0deg", "30deg"]
@@ -77,6 +89,7 @@ export default () => {
         <Button
             onPress={() => {
                 // 用于创建基于时间的动画效果的一个函数
+                // 通过调用 Animated.timing 创建一个新的动画对象，然后调用 start 方法来启动动画。
                 Animated.timing(marginLeft, {
                     toValue: 200,
                     duration: 1000,
@@ -269,7 +282,7 @@ export default () => {
                     //     }
                     // )
 
-                    //下面的是简单的写法,写在onPress下面
+                    //下面的是简单的写法,写在改变的属性下面
                     LayoutAnimation.spring()
                     setShowView(!showView)
                 }}
@@ -280,7 +293,7 @@ export default () => {
 
             <TouchableOpacity style={styles.reverseBtn}
                 onPress={() => {
-                    //简单写法，就是组合动画的方式,写在onPress下面
+                    //简单写法，就是组合动画的方式,写在改变的属性下面
                     LayoutAnimation.linear()
                     setShowRight(!showRight)
                 }}

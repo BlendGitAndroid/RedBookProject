@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     txt: {
         width: "100%",
         height: 56,
+        textAlign: "center",
         color: "#333333",
     },
     sectionHeaderTxt: {

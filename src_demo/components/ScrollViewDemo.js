@@ -29,7 +29,7 @@ export default () => {
         pagingEnabled={true}    // 当值为 true 时，滚动条会停在滚动视图的尺寸的整数倍位置
         scrollEnabled={true} //可以滚动
         // contentOffset={{ y: 100 }}
-        stickyHeaderIndices={[1]}   // 一个子视图下标的数组，用于决定哪些成员会在滚动之后固定在屏幕顶端，不能和horizontal={true}一起使用。
+        stickyHeaderIndices={[0]}   // 一个子视图下标的数组，用于决定哪些成员会在滚动之后固定在屏幕顶端，不能和horizontal={true}一起使用。
     >
         <View style={styles.pageView}>
             <TextInput style={styles.textInput}></TextInput>
@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 56,
         textAlignVertical: "center",
-        color: "black"
+        textAlign: "center",
+        color: "black",
+        backgroundColor: "#F0F0F0",
     },
     containerStyle: {
         paddingHorizontal: 16,

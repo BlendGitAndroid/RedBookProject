@@ -15,6 +15,8 @@ import { ThemeContext } from './ThemeContext';
 // 引入高阶组件
 import withFloatButton from './withFloatButton';
 
+
+// 函数组件，也就是函数，(props) => {} 也就是一个函数
 export default withFloatButton((props) => {
 
     const { name } = props

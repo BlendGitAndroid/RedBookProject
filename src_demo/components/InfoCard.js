@@ -12,7 +12,8 @@ export default (props) => {
             <Text style={ [styles.text, styles.textBold]}>
                 {`姓名：${name}`}
             </Text>
-            {levelView}
+            {/* 显示语句块，因为这是一个对象 */}
+            {levelView} 
             {/* 显示子组件 */}
             {props.children}
         </View>

@@ -14,6 +14,7 @@ type IReactComponent =
 
 // 这里的T是泛型，表示传入的组件类型,限制传入的组件类型必须是React组件
 // 所以高阶组件经常作为一个函数，且该函数接受一个组件作为参数，并返回一个新的组件。
+// 高阶组件是函数， 在这个高阶组件函数中，OriginView 是被传入的原始组件，这个函数会对它进行包装，添加一些额外的功能，然后返回一个新的组件
 export default <T extends IReactComponent>(OriginView: T): T => {
 
     // HOC(全称Higher-order component)
@@ -26,7 +27,7 @@ export default <T extends IReactComponent>(OriginView: T): T => {
         }, [])
 
         return <>
-            {/* 给OriginView传值,这个值就是HOCView的值 */}
+            {/* 给OriginView传值,这个值就是Header组件的值 */}
             <OriginView {...props}></OriginView>
 
             <TouchableOpacity
@@ -40,6 +41,9 @@ export default <T extends IReactComponent>(OriginView: T): T => {
         </>
 
     }
+
+    // 这样做的目的是确保高阶组件函数的返回类型与输入类型相同。因为这个函数的签名是 <T extends IReactComponent>(OriginView: T): T，
+    // 所以它应该接收一个 T 类型的组件，并返回一个 T 类型的组件。通过使用类型断言 as T，你可以确保这个函数的返回类型与输入类型相同。
     return HOCView as T
 
 }

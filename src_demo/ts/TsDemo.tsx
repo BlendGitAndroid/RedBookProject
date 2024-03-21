@@ -19,6 +19,12 @@ export default () => {
         const num3: Number = new Number(13)
         console.log(num3.valueOf())
 
+        // 这段代码是在 TypeScript 的常量，其类型被注解为 `boolean`。
+        // `!!undefined` 是一个 JavaScript 表达式，它使用了逻辑非运算符 `!`。逻辑非运算符会将其操作数转换为布尔值，然后取反。因此，`!undefined` 会首先
+        // 将 `undefined` 转换为布尔值（`undefined` 转换为布尔值的结果是 `false`），然后取反，得到 `true`。然后，再次应用逻辑非运算符，得到 `false`。
+        // 因此，`!!undefined` 的结果是 `false`，所以 b 的值将被初始化为 `false`。
+        // 这种使用双重逻辑非运算符的技巧是一种常见的将值转换为布尔值的方法。它可以用于任何类型的值，结果将根据值的“真值性”（truthiness）：所有的假值（falsy values）
+        //（包括 `false`、`0`、`""`、`null`、`undefined` 和 `NaN`）将被转换为 `false`，所有其他的值将被转换为 `true`。
         const b: boolean = !!undefined
         console.log(b)
 
@@ -65,6 +71,9 @@ export default () => {
     }
 
     const onButtonPress4: () => void = () => {
+
+        // 使用 `as Student` 进行类型断言。这是 TypeScript 的一个特性，允许你覆盖 TypeScript 的类型推断。在这个例子中，`as Student` 表示我们确
+        // 信这个对象符合 `Student` 类型的要求。如果这个对象缺少 `Student` 类型需要的任何属性，或者任何属性的值的类型不正确，TypeScript 将会在编译时报错。
         const student: Student = {
             name: "Blend",
             age: 30,

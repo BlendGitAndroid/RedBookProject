@@ -21,13 +21,26 @@ import icon_bank from '../assets/icon_bank.png';
 import icon_other from '../assets/icon_other.png';
 import icon_arrow from '../assets/icon_arrow.png';
 
-//创建一个对象，可以使用person.property 或 person["property"]这两种方式来获取
+// 创建一个对象，可以使用person.property 或 person["property"]这两种方式来获取
+// 定义了一个名为 iconMap 的常量，它是一个 JavaScript 对象、
+// 在 JavaScript 中，对象的属性可以通过点符号（`.`）或方括号（`[]`）来访问。但是，
+// 如果属性名是一个字符串并且包含特殊字符（如空格）或者是一个保留字，那么你必须使用
+// 方括号来访问。在你的例子中，`iconMap.'游戏'` 是无效的，因为 `'游戏'` 是一个字符串，
+// 不能使用点符号来访问。你应该使用 `iconMap['游戏']` 来访问 `'游戏'` 属性。所以，如
+// 果 `iconMap` 对象有一个 `'游戏'` 属性，并且 `icon_game` 已经被定义并赋值，那么 `iconMap['游戏']` 应该可以获取到 `icon_game` 的值。
 const iconMap = {
     '游戏': icon_game,
     '平台': icon_platform,
     '银行卡': icon_bank,
     '其它': icon_other,
 }
+
+// const iconMap = {
+//     game: icon_game,
+//     platform: icon_platform,
+//     bankCard: icon_bank,
+//     other: icon_other,
+// }
 
 export default () => {
 

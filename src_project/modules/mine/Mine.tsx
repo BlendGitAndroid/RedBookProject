@@ -211,7 +211,8 @@ export default observer(() => {
         });
         const { info } = store;
 
-        //使用View的onLayout的回调参数，获取到View的高
+        // 使用View的onLayout的回调参数，获取到View的高
+        // onLayout 是一个事件处理函数，它在组件布局发生变化时被调用。
         return (
             <View onLayout={(e: LayoutChangeEvent) => {
                 const { height } = e.nativeEvent.layout;

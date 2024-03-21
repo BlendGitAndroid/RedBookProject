@@ -24,6 +24,7 @@ export default () => {
         </View>
     
 
+    // 使用（）表示对象，不需要return，省略了() => {}
     const ListEmpty = (
         <View style={styles.listEmpty}>
             <Text style={styles.extraTxt}>空列表</Text>

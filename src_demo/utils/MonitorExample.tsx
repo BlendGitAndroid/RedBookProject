@@ -14,6 +14,8 @@ export default class MonitorExample extends React.Component<{}, { hasError: bool
   }
 
   // 渲染备用 UI，处理 JSX 报错
+  // 这段代码是 React 组件的一个生命周期方法：getDerivedStateFromError。这个方法在渲染过程，
+  // 生命周期方法，或者整个树下的任何子组件的构造函数中发生错误时被调用。
   static getDerivedStateFromError() {
     return { hasError: true };
   }
